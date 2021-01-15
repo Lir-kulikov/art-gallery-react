@@ -1,0 +1,274 @@
+@import 'styles/_mixins.scss';
+
+.footer {
+  background-color: #1e2026;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 87px;
+    padding-bottom: 75px;
+
+    @include media('<desktop-sm') {
+      padding-top: 33px;
+      padding-bottom: 29px;
+    }
+
+    @include media('<tablet') {
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+  }
+
+  &__col {
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+
+    @include media('<desktop-sm') {
+      flex-basis: 50%;
+    }
+
+    @include media('<tablet') {
+      flex-basis: auto;
+    }
+
+    &--tablet-hidden {
+      @include media('<desktop-sm') {
+        display: none;
+      }
+    }
+  }
+
+  &__col-title {
+    position: relative;
+    padding-bottom: 8px;
+    margin-bottom: 25px;
+    color: car(--white);
+    font-size: 18px;
+
+    @include media('<desktop-sm') {
+      padding-bottom: 7px;
+      margin-bottom: 15px;
+    }
+
+    @include media('<tablet') {
+      display: none;
+    }
+
+    &::after {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 1px;
+      background-color: var(--white);
+      content: '';
+    }
+  }
+
+  &__list {
+    &--contacts {
+      & .footer__col-link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  &__col-item {
+    &:not(:last-child) {
+      margin-bottom: 0;
+
+      @include media('<desktop-sm') {
+        margin-bottom: 5px;
+      }
+    }
+  }
+
+  &__mail-icon,
+  &__location-icon,
+  &__phone-icon {
+    margin-right: 10px;
+  }
+
+  &__col-link {
+    display: inline-flex;
+    align-items: flex-start;
+    padding: 5px 15px;
+    margin-left: -15px;
+    color: var(--white);
+    font-size: 16px;
+    text-decoration: none;
+    transition: background-color var(--transition) ease;
+
+    &:hover {
+      background-color: var(--hover);
+    }
+
+    &--no-hover {
+      &:hover {
+        background-color: inherit;
+      }
+    }
+  }
+
+  &__pay-systems {
+    @include media('<tablet') {
+      display: block;
+      height: 27px;
+      margin-top: 25px;
+    }
+  }
+
+  &__adress {
+    font-size: 16px;
+
+    @include media('<tablet') {
+      font-size: 14px;
+    }
+  }
+
+  &__email {
+    font-size: 16px;
+
+    @include media('<tablet') {
+      color: var(--line);
+      font-size: 14px;
+    }
+  }
+
+  &__social {
+    margin-bottom: 40px;
+
+    @include media('<desktop-sm') {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__under {
+    background-color: #191b1f;
+
+    @include media('<tablet') {
+      background-color: #1e2026;
+    }
+  }
+
+  &__under-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 0;
+
+    @include media('<desktop-sm') {
+      padding: 14px 0;
+    }
+
+    @include media('<tablet') {
+      flex-direction: column;
+      padding: 0 0 14px;
+    }
+  }
+
+  &__copy {
+    color: var(--line);
+    text-decoration: none;
+    transition: color var(--transition) ease;
+
+    @include media('<tablet') {
+      text-align: center;
+    }
+  }
+
+  &__copy-item {
+    color: inherit;
+    font-size: 14px;
+    text-decoration: inherit;
+    transition: inherit;
+
+    @include media('<tablet') {
+      font-size: 12px;
+    }
+
+    &:not(:last-child) {
+      margin-right: 40px;
+    }
+
+    &:last-child {
+      margin-left: 35px;
+    }
+
+    &:hover {
+      color: var(--white);
+    }
+
+    &--right {
+      display: block;
+      margin-left: 100px;
+    }
+
+    @include media('<desktop-sm') {
+      display: block;
+
+      &:not(:last-child) {
+        margin-right: 0;
+      }
+
+      &:last-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+  &__company {
+    display: inline-block;
+    align-self: center;
+    margin-right: 250px;
+    color: var(--line);
+    font-size: 14px;
+
+    @include media('<desktop-sm') {
+      margin-right: 0;
+    }
+
+    @include media('<tablet') {
+      display: block;
+      width: calc(100% + 20px);
+      order: -1;
+      padding: 15px 0;
+      margin-right: -10px;
+      margin-bottom: 12px;
+      margin-left: -10px;
+      background-color: #191b1f;
+      text-align: center;
+    }
+  }
+
+  &__creator-text {
+    display: none;
+    color: var(--dark-3);
+    font-size: 12px;
+    letter-spacing: 0.3px;
+
+    @include media('<tablet') {
+      display: inline;
+    }
+  }
+
+  &__creator-link {
+    color: var(--dark-3);
+    font-size: 12px;
+    letter-spacing: 0.3px;
+  }
+
+  &__creator-img {
+    width: 100px;
+    height: 26px;
+    margin-bottom: 5px;
+
+    @include media('<tablet') {
+      display: none;
+    }
+  }
+}

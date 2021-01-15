@@ -1,0 +1,141 @@
+@import 'styles/_mixins.scss';
+
+.search {
+  &__icon {
+    position: relative;
+    display: block;
+    padding: 10px;
+    cursor: pointer;
+
+    @include media('<tablet') {
+      padding: 0;
+    }
+
+    &::before {
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      width: 200%;
+      height: 20px;
+      content: '';
+      transform: translateX(-50%);
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  }
+
+  &__drop {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    overflow: hidden;
+    width: 100%;
+    max-height: 0;
+    padding: 0;
+    background-color: #9febeb;
+    transition: max-height var(--transition) ease, padding var(--transition) ease;
+
+    &.is-open {
+      overflow: visible;
+      max-height: 400px;
+      padding: 35px;
+
+      @include media('<tablet') {
+        padding: 16px 10px;
+      }
+    }
+
+    @include media('<tablet') {
+      top: 52px;
+    }
+  }
+
+  &__field-wrapper {
+    position: relative;
+    display: flex;
+    max-width: 900px;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  &__field {
+    display: block;
+    width: 100%;
+    padding-top: 15px;
+    padding-right: 110px;
+    padding-bottom: 15px;
+    padding-left: 26px;
+    background-color: var(--white);
+    color: var(--dark-2);
+    font-size: 24px;
+    transition: transform var(--transition) linear;
+
+    @include media('<tablet') {
+      padding-top: 8px;
+      padding-right: 12px;
+      padding-bottom: 8px;
+      padding-left: 12px;
+      font-size: 16px;
+    }
+  }
+
+  &__icon {
+    .search-icon--theme-dark {
+      @include media('<tablet') {
+        fill: var(--black);
+      }
+    }
+  }
+
+  &__close-btn {
+    position: absolute;
+    top: 50%;
+    right: 80px;
+    padding: 0;
+    background-color: var(--white);
+    cursor: pointer;
+    transform: translateY(-50%);
+
+    @include media('<tablet') {
+      right: 40px;
+    }
+
+    & .icon-close {
+      width: 25px;
+      height: 25px;
+      fill: var(--dark-3);
+
+      @include media('<tablet') {
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
+
+  &__btn {
+    position: absolute;
+    top: 50%;
+    right: 26px;
+    padding: 0;
+    background-color: var(--white);
+    cursor: pointer;
+    transform: translateY(-50%);
+
+    @include media('<tablet') {
+      right: 10px;
+    }
+
+    & .search-icon {
+      width: 27px;
+      height: 27px;
+      fill: var(--dark-3);
+
+      @include media('<tablet') {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+}

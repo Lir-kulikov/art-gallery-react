@@ -1,0 +1,133 @@
+@import 'styles/_mixins.scss';
+
+.masonry-fixed-card {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 480px;
+  padding: 15px 20px 0 20px;
+  cursor: pointer;
+  text-decoration: none;
+
+  @include media('<desktop-sm') {
+    height: 440px;
+    padding: 23px 8px 0 8px;
+  }
+
+  &:hover {
+    .masonry-fixed-card__btn::before {
+      transform: translateX(-10px) rotate(20deg);
+    }
+  }
+
+  &__inner {
+    height: 100%;
+    padding: 38px 0;
+    background-color: #191b1f;
+
+    @include media('<desktop-sm') {
+      padding: 28px 0;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: transform var(--transition) ease;
+
+    @include media('<desktop-sm') {
+      top: -7px;
+    }
+  }
+
+  &__title {
+    position: relative;
+    margin-top: 160px;
+    margin-right: 38px;
+    margin-bottom: 30px;
+    margin-left: 38px;
+    color: var(--white);
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: 0.55px;
+
+    @include media('<desktop-sm') {
+      margin-top: 120px;
+      margin-right: 28px;
+      margin-bottom: 30px;
+      margin-left: 28px;
+    }
+
+    &::before {
+      position: absolute;
+      top: -25px;
+      left: 0;
+      width: 40px;
+      height: 1px;
+      background-color: var(--white);
+      content: '';
+    }
+  }
+
+  &__btn {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.55px;
+    text-align: center;
+    transition: background-color var(--transition) ease;
+
+    @include media('<desktop-sm') {
+      padding: 20px 20px 40px 50px;
+    }
+
+    &:hover {
+      background-color: var(--hover);
+    }
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: -15px;
+      width: 91px;
+      height: 100px;
+      background-image: url('/img/masonry-card-fixed-2.png');
+      background-repeat: no-repeat;
+      content: '';
+      transition: transform var(--transition) ease;
+
+      @include media('<desktop-sm') {
+        left: -5px;
+      }
+    }
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      width: 36px;
+      height: 10px;
+      background-image: url('/img/long-arrow-right.svg');
+      background-position: left center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      content: '';
+      transform: translateY(-50%);
+
+      @include media('<desktop-sm') {
+        top: auto;
+        bottom: 20px;
+        left: 40%;
+        transform: translateY(0);
+      }
+    }
+  }
+}

@@ -1,0 +1,76 @@
+@import 'styles/_mixins.scss';
+
+.new-works {
+
+  padding-top: 47px;
+  padding-bottom: 62px;
+  background-color: var(--light-gray);
+
+  @include media('<desktop-sm') {
+    padding-top: 30px;
+    padding-bottom: 50px;
+  }
+
+  @include media('<tablet') {
+
+    padding-bottom: 36px;
+  }
+
+  &__title {
+    margin-bottom: 9px;
+
+    @include media('<tablet') {
+      margin-bottom: 15px;
+    }
+  }
+
+  &__wrapper {
+    position: relative;
+  }
+
+  &__sort {
+    position: absolute;
+    right: 20px;
+    bottom: 5px;
+    display: flex;
+    align-items: center;
+
+    @include media('<desktop') {
+      bottom: -80px;
+    }
+
+    @include media('<tablet') {
+      right: 10px;
+      bottom: -100px;
+      flex-wrap: wrap;
+      padding-top: 10px;
+    }
+
+    & .sort__label {
+      margin-right: 20px;
+      color: var(--black);
+
+      @include media('<tablet') {
+        margin-bottom: 5px;
+      }
+    }
+  }
+
+  &__section-line {
+    margin-bottom: 50px;
+
+    @include media('<desktop') {
+      margin-bottom: 100px;
+    }
+  }
+
+  &__btn {
+    display: block;
+    border: 1px solid #999999;
+    margin: 0 auto;
+
+    @include media('<tablet') {
+      min-width: 100%;
+    }
+  }
+}

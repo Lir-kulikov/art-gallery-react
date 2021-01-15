@@ -1,0 +1,232 @@
+@import 'styles/_mixins.scss';
+
+.header {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  @include media('<tablet') {
+    border-bottom: 1px solid var(--line);
+    background-color: var(--white);
+  }
+
+  &__inner {
+    display: flex;
+    height: 80px;
+    align-items: center;
+    justify-content: space-between;
+
+    @include media('<tablet') {
+      height: 52px;
+    }
+  }
+
+  &__left {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    margin-right: 60px;
+
+    @include media('<desktop') {
+      margin-right: 0;
+    }
+
+    @include media('<desktop-sm') {
+      order: 2;
+    }
+  }
+
+  &__action {
+    display: flex;
+    align-items: center;
+    margin-left: 55px;
+
+    @include media('<desktop') {
+      margin-left: 30px;
+    }
+
+    @include media('<tablet') {
+      margin-left: 0;
+    }
+
+
+    &-item {
+      display: block;
+      flex-shrink: 0;
+      margin-right: 42px;
+      transition: background-color var(--transition) ease;
+
+      @include media('<desktop-sm') {
+        margin-right: 10px;
+      }
+
+      @include media('>tablet') {
+        &:nth-last-child(-n+1) {
+          margin-right: 0;
+        }
+      }
+
+      @include media('<tablet') {
+        margin-right: 0;
+
+        &:not(:first-child) {
+          margin-left: 21px;
+        }
+      }
+    }
+  }
+
+  &__nav {
+    margin-left: 115px;
+
+    @include media('<desktop') {
+      margin-left: 50px;
+
+      .nav__link {
+        padding: 8px 20px;
+      }
+    }
+
+    @include media('<desktop-sm') {
+      margin-left: 0;
+    }
+  }
+
+  &__basket {
+    display: flex;
+    padding: 10px;
+    cursor: pointer;
+
+    @include media('<tablet') {
+      padding: 0;
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  }
+
+  &__basket-icon {
+    display: block;
+
+    &.basket-icon {
+      display: block;
+
+      @include media('<tablet') {
+        stroke: var(--black);
+      }
+    }
+  }
+
+  &__basket-icon-counter,
+  &__heart-icon-counter {
+    padding: 3px 5px 0;
+    margin-left: -10px;
+    background-color: var(--dark-3);
+    border-radius: 20px;
+    color: var(--white);
+    font-size: 13px;
+    line-height: 1.2;
+  }
+
+  &__heart-icon {
+    display: block;
+
+    &.heart-icon {
+      display: block;
+
+      @include media('<tablet') {
+        stroke: var(--black);
+      }
+    }
+  }
+
+  &__wishlist {
+    display: flex;
+    padding: 10px;
+    cursor: pointer;
+
+    @include media('<tablet') {
+      padding: 0;
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  }
+
+  &__lang {
+    @include media('<tablet') {
+      display: none;
+    }
+  }
+
+  &--theme-light {
+    border-bottom: 1px solid #ededed;
+    background-color: var(--white);
+
+    .burger {
+      .burger__line {
+        background-color: var(--black);
+      }
+
+      &::before,
+      &::after {
+        background-color: var(--black);
+      }
+    }
+
+    .header__basket {
+      &:hover {
+        .basket-icon {
+          stroke: var(--white);
+        }
+      }
+    }
+
+    .header__wishlist {
+      &:hover {
+        .heart-icon {
+          stroke: var(--white);
+        }
+      }
+    }
+
+    .account__btn:hover {
+      .account__name {
+        color: var(--white);
+      }
+
+      .account__user-icon {
+        fill: var(--white);
+      }
+    }
+
+    .search__icon:hover {
+      transition: inherit;
+
+      .search-icon {
+        fill: var(--white);
+      }
+    }
+  }
+
+  &--theme-dark {
+    background-color: var(--dark-opacity);
+
+    @include media('<tablet') {
+      background-color: var(--white);
+    }
+  }
+
+  .lang__btn:hover {
+    color: var(--white);
+    transition: inherit;
+  }
+}
