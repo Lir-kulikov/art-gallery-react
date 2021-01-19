@@ -4,4 +4,8 @@
   width: 115px;
   height: 20px;
   flex-shrink: 0;
+
+  @include media('<tablet') {
+    width: 33px;
+  }
 }

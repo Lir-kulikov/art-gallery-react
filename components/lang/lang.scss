@@ -41,10 +41,8 @@
     padding: 15px 10px;
     background-color: var(--white);
     box-shadow: 0 0 17px 3px rgba(0, 0, 0, 0.15);
-    opacity: 0;
     transform: translateX(-50%);
     transition: var(--transition) ease;
-    visibility: hidden;
 
     &::before {
       position: absolute;
@@ -55,11 +53,6 @@
       background-color: var(--white);
       content: '';
       transform: rotate(45deg);
-    }
-
-    &.is-open {
-      opacity: 1;
-      visibility: visible;
     }
   }
 

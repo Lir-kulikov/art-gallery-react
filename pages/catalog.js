@@ -3,10 +3,177 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import Filter from '../components/filter';
 import FilterCards from '../components/filter-cards';
+import Sort from '../components/sort'
+import GridMasonry from '../components/grid-masonry';
+
+const CATALOG_DATA = {
+  parentClass: 'catalog',
+  items: [
+    {
+        id: 0,
+        picture: '/img/masonry-card-1.jpg',
+        tag: {
+            text: 'Новинка',
+            color: 'red'
+        },
+        title: 'Распоряжения о структуре тут длинное название картины',
+        url: '/product',
+        author: {
+            name: 'Екатерина Александровна Преображенская',
+            url: ''
+        },
+        size: 'Картина, 80x50 см.',
+        price: 927750,
+        oldPrice: 727750,
+        favourite: true,
+        basket: false
+    },
+    {
+        id: 1,
+        picture: '/img/masonry-card-2.jpg',
+        tag: {
+            text: 'Скидка',
+            color: 'Green'
+        },
+        title: 'Распоряжения о структуре тут длинное название картины',
+        url: '/productCard',
+        author: {
+            name: 'Екатерина Александровна Преображенская',
+            url: ''
+        },
+        size: 'Картина, 80x60 см.',
+        price: 927750,
+        oldPrice: 727750,
+        favourite: false,
+        basket: true
+    },
+    {
+        id: 2,
+        picture: '/img/masonry-card-3.jpg',
+        tag: {
+
+        },
+        title: 'Распоряжения о структуре тут длинное название картины',
+        url: '/productCard',
+        author: {
+            name: 'Екатерина Александровна Преображенская',
+            url: ''
+        },
+        size: 'Картина, 80x60 см.',
+        price: 927750,
+        oldPrice: 727750,
+        favourite: false,
+        basket: false
+    },
+    {
+        id: 3,
+        picture: '/img/masonry-card-4.jpg',
+        tag: {
+            text: 'Скидка',
+            color: 'Green'
+        },
+        title: 'Распоряжения о структуре тут длинное название картины',
+        url: '/productCard',
+        author: {
+            name: 'Екатерина Александровна Преображенская',
+            url: ''
+        },
+        size: 'Картина, 80x60 см.',
+        price: 927750,
+        oldPrice: 727750,
+        favourite: false,
+        basket: false
+    },
+    {
+        id: 4,
+        picture: '/img/masonry-card-5.jpg',
+        tag: {
+
+        },
+        title: 'Распоряжения о структуре тут длинное название картины',
+        url: '/productCard',
+        author: {
+            name: 'Екатерина Александровна Преображенская',
+            url: ''
+        },
+        size: 'Картина, 80x60 см.',
+        price: 927750,
+        oldPrice: 727750,
+        favourite: false,
+        basket: false
+    },
+    {
+        id: 5,
+        picture: '/img/masonry-card-6.jpg',
+        tag: {
+
+        },
+        title: 'Распоряжения о структуре тут длинное название картины',
+        url: '/productCard',
+        author: {
+            name: 'Екатерина Александровна Преображенская',
+            url: ''
+        },
+        size: 'Картина, 80x60 см.',
+        price: 927750,
+        oldPrice: 727750,
+        favourite: false,
+        basket: false
+    },
+    {
+        id: 6,
+        picture: '/img/masonry-card-7.jpg',
+        tag: {
+            text: 'Новинка',
+            color: 'red'
+        },
+        title: 'Распоряжения о структуре тут длинное название картины',
+        url: '/productCard',
+        author: {
+            name: 'Екатерина Александровна Преображенская',
+            url: ''
+        },
+        size: 'Картина, 80x60 см.',
+        price: 927750,
+        oldPrice: 727750,
+        favourite: false,
+        basket: false
+    },
+    {
+        id: 7,
+        picture: '/img/masonry-card-8.jpg',
+        tag: {
+            text: 'Скидка',
+            color: 'Green'
+        },
+        title: 'Распоряжения о структуре тут длинное название картины',
+        url: '/productCard',
+        author: {
+            name: 'Екатерина Александровна Преображенская',
+            url: ''
+        },
+        size: 'Картина, 80x60 см.',
+        price: 927750,
+        oldPrice: 727750,
+        favourite: false,
+        basket: false
+    },
+]
+
+};
 
 const Catalog = () => {
   return (
     <div className='overflow-limiter'>
+      <Head>
+        <title>ArtGallery - Каталог</title>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+        <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+      </Head>
       <Header />
       <main>
         <div className="catalog__top-img-wrapper">
@@ -30,15 +197,9 @@ const Catalog = () => {
         <FilterCards />
         <div className="catalog__product-cards">
           <div className="container">
-            <div className="sort catalog__sort">
-              <label className="sort__label">Сортировать по</label>
-              <select className="sort__select" id="choices-sort">
-                <option value="Дате добавления" />
-                <option value="Цене" />
-                <option value="Популярности" />
-              </select>
-            </div>
-            <div className="grid-masonry catalog__grid-masonry js-gallery">
+            <Sort parentClass={CATALOG_DATA.parentClass} />
+            <GridMasonry data={CATALOG_DATA} />
+            {/* <div className="grid-masonry catalog__grid-masonry js-gallery">
               <div className="grid-masonry__item-sizer js-sizer" />
               <div className="grid-masonry__item-gutter js-gutter" />
               <div className="masonry-fixed-card grid-masonry__item-fixed-card">
@@ -211,7 +372,7 @@ const Catalog = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
             <button className="catalog__product-btn btn">Показать ещё</button>
           </div>
         </div>

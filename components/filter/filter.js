@@ -2,7 +2,7 @@ import './filter.scss'
 
 const Filter = () => {
   return (
-    <form className="filter js-filter-form catalog__filter" action name="filter">
+    <form className="filter js-filter-form catalog__filter" name="filter">
       <div className="container">
         <div className="filter__header js-filter-header">
           <svg className="settings-icon filter__settings-icon">

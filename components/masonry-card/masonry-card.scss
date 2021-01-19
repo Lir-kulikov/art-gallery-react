@@ -1,0 +1,231 @@
+@import 'styles/_mixins.scss';
+
+.masonry-card {
+  overflow: hidden;
+  border: 1px solid (--gray);
+  background-color: var(--white);
+  text-align: left;
+  transition: box-shadow var(--transition) ease;
+
+  &:hover {
+    box-shadow: 0 0 17px 3px rgba(0, 0, 0, 0.15);
+  }
+
+  &__img {
+    position: relative;
+    min-width: 100%;
+    object-fit: cover;
+  }
+
+  &__wrapper {
+    margin-bottom: 10px;
+  }
+
+  &__info {
+    position: relative;
+    padding: 14px 16px 10px 16px;
+
+    @include media('<tablet') {
+      padding: 14px 7px 10px 7px;
+    }
+  }
+
+  &__title {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--black);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+    transition: color var(--transition) ease;
+
+    @include media('<desktop-sm') {
+      margin-bottom: 5px;
+      font-size: 12px;
+    }
+
+    &:hover {
+      color: var(--hover);
+    }
+  }
+
+  &__author {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--dark-2);
+    font-size: 15px;
+    line-height: 1.2;
+    text-decoration: none;
+
+    @include media('<desktop-sm') {
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+
+  &__type {
+    color: var(--dark-3);
+    font-size: 14px;
+
+    @include media('<desktop-sm') {
+      font-size: 12px;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    border-top: 1px solid var(--gray);
+
+    @include media('<desktop-sm') {
+      padding: 8px 16px;
+    }
+
+    @include media('<tablet') {
+      flex-direction: column;
+    }
+  }
+
+  &__price {
+    position: relative;
+    color: var(--black);
+    font-size: 18px;
+
+    &::after {
+      position: absolute;
+      right: -15px;
+      bottom: 0px;
+      content: '₽';
+      font-family: 'PTRoubleSans', sans-serif;
+    }
+
+    @include media('<desktop-sm') {
+      font-size: 16px;
+    }
+
+    @include media('<tablet') {
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+
+  &__old-price {
+    color: var(--dark-3);
+    font-size: 14px;
+    letter-spacing: 0.35px;
+    text-decoration: line-through;
+
+    @include media('<desktop-sm') {
+      font-size: 12px;
+    }
+
+    @include media('<tablet') {
+      order: -1;
+    }
+  }
+
+  &__actions {
+    @include media('<tablet') {
+      position: relative;
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      padding-top: 7px;
+      margin-top: 7px;
+      //border-top: 1px solid var(--gray);
+
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: calc(100% + 33px);
+        height: 1px;
+        background-color: var(--gray);
+        content: '';
+        transform: translateX(-50%);
+      }
+    }
+  }
+
+  &__heart-icon {
+    margin-right: 18px;
+    cursor: pointer;
+    stroke: var(--black);
+    transition: var(--transition) ease;
+
+    &.is-active {
+      animation: beating 0.3s ease;
+      fill: var(--hover);
+      stroke: var(--hover);
+    }
+
+    &:hover {
+      stroke: var(--hover);
+    }
+  }
+
+  &__basket-icon {
+    color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    stroke: var(--black);
+    transition: var(--transition) ease;
+
+    &.is-active {
+      animation: beating 0.3s ease;
+      fill: var(--hover);
+      stroke: var(--hover);
+    }
+
+    &:hover {
+      stroke: var(--hover);
+    }
+  }
+
+  &__card-sticker {
+    position: absolute;
+    top: -10px;
+    left: 17px;
+
+    @include media('<tablet') {
+      left: 7px;
+    }
+  }
+}
+
+@keyframes beating {
+  0% {
+    transform: scale(1);
+  }
+
+  40% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+//stickers
+
+.card-sticker {
+  padding: 0 10px;
+  border-radius: 5px;
+  color: var(--white);
+  font-size: 13px;
+
+  @include media('<desktop-sm') {
+    font-size: 11px;
+  }
+
+  &--new {
+    background-color: var(--sticker-dark);
+  }
+
+  &--sale {
+    background-color: var(--sticker-light);
+  }
+}

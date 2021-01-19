@@ -1,175 +1,248 @@
+import React, {Component} from 'react'
+import MasonryCard from '../masonry-card/masonry-card';
 import MasonryFixedCard from "../masonry-fixed-card";
+import GridMasonry from '../grid-masonry';
+import Sort from '../sort'
 
 import './new-works.scss'
 
-const NewWorks = () => {
-  return (
-    <section className="new-works">
-      <div className="container new-works__wrapper">
-        <h2 className="new-works__title title-lg">Новые работы</h2>
-        <div className="sort new-works__sort">
-          <label className="sort__label">Сортировать по</label>
-          <select className="sort__select" id="choices-sort">
-            <option value="Дате добавления" />
-            <option value="Цене" />
-            <option value="Популярности" />
-          </select>
+const NEW_WORKS_DATA = {
+  parentClass: 'new-works',
+  title: '',
+    sort: {
+
+    },
+    static: {
+
+    },
+    items: [
+      {
+          id: 0,
+          picture: '/img/masonry-card-1.jpg',
+          tag: {
+              text: 'Новинка',
+              color: 'red'
+          },
+          title: 'Распоряжения о структуре тут длинное название картины',
+          url: '/product',
+          author: {
+              name: 'Екатерина Александровна Преображенская',
+              url: ''
+          },
+          size: 'Картина, 80x50 см.',
+          price: 927750,
+          oldPrice: 727750,
+          favourite: true,
+          basket: false
+      },
+      {
+          id: 1,
+          picture: '/img/masonry-card-2.jpg',
+          tag: {
+              text: 'Скидка',
+              color: 'Green'
+          },
+          title: 'Распоряжения о структуре тут длинное название картины',
+          url: '/productCard',
+          author: {
+              name: 'Екатерина Александровна Преображенская',
+              url: ''
+          },
+          size: 'Картина, 80x60 см.',
+          price: 927750,
+          oldPrice: 727750,
+          favourite: false,
+          basket: true
+      },
+      {
+          id: 2,
+          picture: '/img/masonry-card-3.jpg',
+          tag: {
+
+          },
+          title: 'Распоряжения о структуре тут длинное название картины',
+          url: '/productCard',
+          author: {
+              name: 'Екатерина Александровна Преображенская',
+              url: ''
+          },
+          size: 'Картина, 80x60 см.',
+          price: 927750,
+          oldPrice: 727750,
+          favourite: false,
+          basket: false
+      },
+      {
+          id: 3,
+          picture: '/img/masonry-card-4.jpg',
+          tag: {
+              text: 'Скидка',
+              color: 'Green'
+          },
+          title: 'Распоряжения о структуре тут длинное название картины',
+          url: '/productCard',
+          author: {
+              name: 'Екатерина Александровна Преображенская',
+              url: ''
+          },
+          size: 'Картина, 80x60 см.',
+          price: 927750,
+          oldPrice: 727750,
+          favourite: false,
+          basket: false
+      },
+      {
+          id: 4,
+          picture: '/img/masonry-card-5.jpg',
+          tag: {
+
+          },
+          title: 'Распоряжения о структуре тут длинное название картины',
+          url: '/productCard',
+          author: {
+              name: 'Екатерина Александровна Преображенская',
+              url: ''
+          },
+          size: 'Картина, 80x60 см.',
+          price: 927750,
+          oldPrice: 727750,
+          favourite: false,
+          basket: false
+      },
+      {
+          id: 5,
+          picture: '/img/masonry-card-6.jpg',
+          tag: {
+ 
+          },
+          title: 'Распоряжения о структуре тут длинное название картины',
+          url: '/productCard',
+          author: {
+              name: 'Екатерина Александровна Преображенская',
+              url: ''
+          },
+          size: 'Картина, 80x60 см.',
+          price: 927750,
+          oldPrice: 727750,
+          favourite: false,
+          basket: false
+      },
+      {
+          id: 6,
+          picture: '/img/masonry-card-7.jpg',
+          tag: {
+              text: 'Новинка',
+              color: 'red'
+          },
+          title: 'Распоряжения о структуре тут длинное название картины',
+          url: '/productCard',
+          author: {
+              name: 'Екатерина Александровна Преображенская',
+              url: ''
+          },
+          size: 'Картина, 80x60 см.',
+          price: 927750,
+          oldPrice: 727750,
+          favourite: false,
+          basket: false
+      },
+      {
+          id: 7,
+          picture: '/img/masonry-card-8.jpg',
+          tag: {
+              text: 'Скидка',
+              color: 'Green'
+          },
+          title: 'Распоряжения о структуре тут длинное название картины',
+          url: '/productCard',
+          author: {
+              name: 'Екатерина Александровна Преображенская',
+              url: ''
+          },
+          size: 'Картина, 80x60 см.',
+          price: 927750,
+          oldPrice: 727750,
+          favourite: false,
+          basket: false
+      },
+
+  ]
+}
+
+class NewWorks extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.grid = React.createRef();
+    this.msnry = false;
+  }
+
+  componentDidMount() {
+    this.msnry = new Masonry( this.grid.current, {
+      itemSelector: '.js-grid-item',
+      columnWidth: '.js-sizer',
+      gutter: '.js-gutter',
+      horizontalOrder: true,
+      percentPosition: true
+    });
+  }
+
+  render() {
+    return (
+      <section className="new-works">
+        <div className="container new-works__wrapper">
+          <h2 className="new-works__title title-lg">Новые работы</h2>
+          <Sort parentClass={NEW_WORKS_DATA.parentClass}/>
         </div>
-      </div>
-      <div className="section-line new-works__section-line" />
-      <div className="container">
-        <div className="grid-masonry new-works__grid-masonry js-gallery-fixed">
-          <div className="grid-masonry__item-sizer js-sizer" />
-          <div className="grid-masonry__item-gutter js-gutter" />
-          <MasonryFixedCard />
-          <div className="masonry-card grid-masonry__item js-grid-item"><a className="masonry-card__img-wrapper" href="#"><img className="masonry-card__img" src="img/masonry-card-1.jpg" /></a>
-            <div className="masonry-card__info"><span className="card-sticker masonry-card__card-sticker card-sticker--undefined" /><a className="masonry-card__title" href="#">Распоряжения о структуре тут длинное название картины</a><a className="masonry-card__author" href="#">Екатерина Александровна Преображенская</a><span className="masonry-card__type">Картина,  80x60 см.</span>
-            </div>
-            <div className="masonry-card__footer">
-              <div className="masonry-card__price">927 750</div>
-              <div className="masonry-card__old-price">727 750</div>
-              <div className="masonry-card__actions">
-                <svg className="heart-icon masonry-card__heart-icon js-icon heart-icon--undefined">
-                  <use xlinkHref="img/svg/sprite.svg#heart" />
-                </svg>
-                <svg className="basket-icon masonry-card__basket-icon js-icon basket-icon--fixed">
-                  <use xlinkHref="img/svg/sprite.svg#basket" />
-                </svg>
-              </div>
-            </div>
-          </div>
-          <div className="masonry-card grid-masonry__item js-grid-item"><a className="masonry-card__img-wrapper" href="#"><img className="masonry-card__img" src="img/masonry-card-2.jpg" /></a>
-            <div className="masonry-card__info"><span className="card-sticker masonry-card__card-sticker card-sticker--new">Новинка</span><a className="masonry-card__title" href="#">Абстракция, Опус J202</a><a className="masonry-card__author" href="#">Соколов Виталий</a><span className="masonry-card__type">Картина,  80x60 см.</span>
-            </div>
-            <div className="masonry-card__footer">
-              <div className="masonry-card__price">927 750</div>
-              <div className="masonry-card__old-price">727 750</div>
-              <div className="masonry-card__actions">
-                <svg className="heart-icon masonry-card__heart-icon js-icon heart-icon--undefined">
-                  <use xlinkHref="img/svg/sprite.svg#heart" />
-                </svg>
-                <svg className="basket-icon masonry-card__basket-icon js-icon basket-icon--fixed">
-                  <use xlinkHref="img/svg/sprite.svg#basket" />
-                </svg>
-              </div>
-            </div>
-          </div>
-          <div className="grid-masonry__item grid-masonry__item--empty js-grid-item hidden-desktop-up hidden-mobile-down" />
-          <div className="masonry-card grid-masonry__item js-grid-item"><a className="masonry-card__img-wrapper" href="#"><img className="masonry-card__img" src="img/masonry-card-3.jpg" /></a>
-            <div className="masonry-card__info"><span className="card-sticker masonry-card__card-sticker card-sticker--new">Новинка</span><a className="masonry-card__title" href="#">Распоряжения о структуре тут длинное название картины</a><a className="masonry-card__author" href="#">Екатерина Александровна Преображенская</a><span className="masonry-card__type">Картина,  80x60 см.</span>
-            </div>
-            <div className="masonry-card__footer">
-              <div className="masonry-card__price">927 750</div>
-              <div className="masonry-card__actions">
-                <svg className="heart-icon masonry-card__heart-icon js-icon heart-icon--undefined">
-                  <use xlinkHref="img/svg/sprite.svg#heart" />
-                </svg>
-                <svg className="basket-icon masonry-card__basket-icon js-icon basket-icon--fixed">
-                  <use xlinkHref="img/svg/sprite.svg#basket" />
-                </svg>
-              </div>
-            </div>
-          </div>
-          <div className="grid-masonry__item grid-masonry__item--empty js-item hidden-tablet-down" />
-          <div className="masonry-card grid-masonry__item js-grid-item"><a className="masonry-card__img-wrapper" href="#"><img className="masonry-card__img" src="img/masonry-card-4.jpg" /></a>
-            <div className="masonry-card__info"><span className="card-sticker masonry-card__card-sticker card-sticker--undefined" /><a className="masonry-card__title" href="#">Распоряжения о структуре</a><a className="masonry-card__author" href="#">Говард Херш</a><span className="masonry-card__type">Картина,  80x60 см.</span>
-            </div>
-            <div className="masonry-card__footer">
-              <div className="masonry-card__price">27 750</div>
-              <div className="masonry-card__old-price" />
-              <div className="masonry-card__actions">
-                <svg className="heart-icon masonry-card__heart-icon js-icon heart-icon--undefined">
-                  <use xlinkHref="img/svg/sprite.svg#heart" />
-                </svg>
-                <svg className="basket-icon masonry-card__basket-icon js-icon basket-icon--fixed">
-                  <use xlinkHref="img/svg/sprite.svg#basket" />
-                </svg>
-              </div>
-            </div>
-          </div>
-          <div className="masonry-card grid-masonry__item js-grid-item"><a className="masonry-card__img-wrapper" href="#"><img className="masonry-card__img" src="img/masonry-card-5.jpg" /></a>
-            <div className="masonry-card__info"><span className="card-sticker masonry-card__card-sticker card-sticker--undefined" /><a className="masonry-card__title" href="#">Абстракция, Опус J202</a><a className="masonry-card__author" href="#">Соколов Виталий</a><span className="masonry-card__type">Картина,  80x60 см.</span>
-            </div>
-            <div className="masonry-card__footer">
-              <div className="masonry-card__price">27 750</div>
-              <div className="masonry-card__old-price" />
-              <div className="masonry-card__actions">
-                <svg className="heart-icon masonry-card__heart-icon js-icon heart-icon--undefined">
-                  <use xlinkHref="img/svg/sprite.svg#heart" />
-                </svg>
-                <svg className="basket-icon masonry-card__basket-icon js-icon basket-icon--fixed">
-                  <use xlinkHref="img/svg/sprite.svg#basket" />
-                </svg>
-              </div>
-            </div>
-          </div>
-          <div className="masonry-card grid-masonry__item js-grid-item"><a className="masonry-card__img-wrapper" href="#"><img className="masonry-card__img" src="img/masonry-card-6.jpg" /></a>
-            <div className="masonry-card__info"><span className="card-sticker masonry-card__card-sticker card-sticker--sale">Скидка 20%</span><a className="masonry-card__title" href="#">Распоряжения о структуре тут длинное название картины</a><a className="masonry-card__author" href="#">Екатерина Александровна Преображенская</a><span className="masonry-card__type">Картина,  80x60 см.</span>
-            </div>
-            <div className="masonry-card__footer">
-              <div className="masonry-card__price">927 750</div>
-              <div className="masonry-card__actions">
-                <svg className="heart-icon masonry-card__heart-icon js-icon heart-icon--undefined">
-                  <use xlinkHref="img/svg/sprite.svg#heart" />
-                </svg>
-                <svg className="basket-icon masonry-card__basket-icon js-icon basket-icon--fixed">
-                  <use xlinkHref="img/svg/sprite.svg#basket" />
-                </svg>
-              </div>
-            </div>
-          </div>
-          <div className="masonry-card grid-masonry__item js-grid-item"><a className="masonry-card__img-wrapper" href="#"><img className="masonry-card__img" src="img/masonry-card-7.jpg" /></a>
-            <div className="masonry-card__info"><span className="card-sticker masonry-card__card-sticker card-sticker--sale">Скидка 20%</span><a className="masonry-card__title" href="#">Растущее действие</a><a className="masonry-card__author" href="#">Рамина Роуз</a><span className="masonry-card__type">Картина,  80x60 см.</span>
-            </div>
-            <div className="masonry-card__footer">
-              <div className="masonry-card__price">927 750</div>
-              <div className="masonry-card__actions">
-                <svg className="heart-icon masonry-card__heart-icon js-icon heart-icon--undefined">
-                  <use xlinkHref="img/svg/sprite.svg#heart" />
-                </svg>
-                <svg className="basket-icon masonry-card__basket-icon js-icon basket-icon--fixed">
-                  <use xlinkHref="img/svg/sprite.svg#basket" />
-                </svg>
-              </div>
-            </div>
-          </div>
-          <div className="masonry-card grid-masonry__item js-grid-item hidden-tablet-down"><a className="masonry-card__img-wrapper" href="#"><img className="masonry-card__img" src="img/masonry-card-8.jpg" /></a>
-            <div className="masonry-card__info"><span className="card-sticker masonry-card__card-sticker card-sticker--undefined" /><a className="masonry-card__title" href="#">Абстракция, Опус J202</a><a className="masonry-card__author" href="#">Соколов Виталий</a><span className="masonry-card__type">Картина,  80x60 см.</span>
-            </div>
-            <div className="masonry-card__footer">
-              <div className="masonry-card__price">27 750</div>
-              <div className="masonry-card__old-price" />
-              <div className="masonry-card__actions">
-                <svg className="heart-icon masonry-card__heart-icon js-icon heart-icon--undefined">
-                  <use xlinkHref="img/svg/sprite.svg#heart" />
-                </svg>
-                <svg className="basket-icon masonry-card__basket-icon js-icon basket-icon--fixed">
-                  <use xlinkHref="img/svg/sprite.svg#basket" />
-                </svg>
-              </div>
-            </div>
-          </div>
-          <div className="masonry-card grid-masonry__item js-grid-item hidden-tablet-down"><a className="masonry-card__img-wrapper" href="#"><img className="masonry-card__img" src="img/masonry-card-9.jpg" /></a>
-            <div className="masonry-card__info"><span className="card-sticker masonry-card__card-sticker card-sticker--undefined" /><a className="masonry-card__title" href="#">Абстракция, Опус J202</a><a className="masonry-card__author" href="#">Соколов Виталий</a><span className="masonry-card__type">Картина,  80x60 см.</span>
-            </div>
-            <div className="masonry-card__footer">
-              <div className="masonry-card__price">27 750</div>
-              <div className="masonry-card__old-price" />
-              <div className="masonry-card__actions">
-                <svg className="heart-icon masonry-card__heart-icon js-icon heart-icon--undefined">
-                  <use xlinkHref="img/svg/sprite.svg#heart" />
-                </svg>
-                <svg className="basket-icon masonry-card__basket-icon js-icon basket-icon--fixed">
-                  <use xlinkHref="img/svg/sprite.svg#basket" />
-                </svg>
-              </div>
-            </div>
-          </div>
+        <div className="section-line new-works__section-line" />
+        <div className="container">
+          <GridMasonry data={NEW_WORKS_DATA} />
+          {/* <div className="grid-masonry new-works__grid-masonry" ref={this.grid}>
+            <div className="grid-masonry__item-sizer js-sizer" />
+            <div className="grid-masonry__item-gutter js-gutter" />
+            <MasonryFixedCard />
+            {NEW_WORKS_DATA.items.map((item, key) => {
+              switch(key) {
+                case 2:
+                  return (
+                    <React.Fragment key={item.id}>
+                      <MasonryCard data={item} />
+                      <div className="grid-masonry__item grid-masonry__item--empty js-item hidden-tablet-down" />
+                    </React.Fragment>
+                  )
+                  break;
+                case 6:
+                  return (
+                    <React.Fragment key={item.id}>
+                      <MasonryCard data={item} />
+                      <div className="grid-masonry__item grid-masonry__item--empty js-grid-item hidden-desktop-up hidden-mobile-down" />
+                    </React.Fragment>
+                  )
+                  break;
+                case 7: 
+                  return (
+                    <React.Fragment key={item.id}>
+                      <MasonryCard data={item} />
+                      <div className="grid-masonry__item grid-masonry__item--empty js-grid-item hidden-desktop-up hidden-mobile-down" />
+                    </React.Fragment>
+                  )
+                  break;
+                default:
+                  return (
+                    <React.Fragment key={item.id}>
+                      <MasonryCard data={item} />
+                    </React.Fragment>
+                  )
+              }
+            })}
+          </div> */}
+          <button className="new-works__btn btn">Смотреть все</button>
         </div>
-        <button className="new-works__btn btn">Смотреть все</button>
-      </div>
-    </section>
-  );
+      </section>
+    );
+  }
+  
 }
 
 export default NewWorks

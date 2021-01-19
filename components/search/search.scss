@@ -32,20 +32,22 @@
     left: 0;
     overflow: hidden;
     width: 100%;
-    max-height: 0;
-    padding: 0;
+    max-height: 400;
+    padding: 35px;
     background-color: #9febeb;
     transition: max-height var(--transition) ease, padding var(--transition) ease;
 
-    &.is-open {
-      overflow: visible;
-      max-height: 400px;
-      padding: 35px;
-
-      @include media('<tablet') {
-        padding: 16px 10px;
-      }
+    @include media('<tablet') {
+      padding: 16px 10px;
     }
+
+    // &.is-open {
+    //   overflow: visible;
+    //   max-height: 400px;
+    //   padding: 35px;
+
+      
+    // }
 
     @include media('<tablet') {
       top: 52px;
