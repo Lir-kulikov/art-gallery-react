@@ -198,45 +198,6 @@ class NewWorks extends Component {
         <div className="section-line new-works__section-line" />
         <div className="container">
           <GridMasonry data={NEW_WORKS_DATA} />
-          {/* <div className="grid-masonry new-works__grid-masonry" ref={this.grid}>
-            <div className="grid-masonry__item-sizer js-sizer" />
-            <div className="grid-masonry__item-gutter js-gutter" />
-            <MasonryFixedCard />
-            {NEW_WORKS_DATA.items.map((item, key) => {
-              switch(key) {
-                case 2:
-                  return (
-                    <React.Fragment key={item.id}>
-                      <MasonryCard data={item} />
-                      <div className="grid-masonry__item grid-masonry__item--empty js-item hidden-tablet-down" />
-                    </React.Fragment>
-                  )
-                  break;
-                case 6:
-                  return (
-                    <React.Fragment key={item.id}>
-                      <MasonryCard data={item} />
-                      <div className="grid-masonry__item grid-masonry__item--empty js-grid-item hidden-desktop-up hidden-mobile-down" />
-                    </React.Fragment>
-                  )
-                  break;
-                case 7: 
-                  return (
-                    <React.Fragment key={item.id}>
-                      <MasonryCard data={item} />
-                      <div className="grid-masonry__item grid-masonry__item--empty js-grid-item hidden-desktop-up hidden-mobile-down" />
-                    </React.Fragment>
-                  )
-                  break;
-                default:
-                  return (
-                    <React.Fragment key={item.id}>
-                      <MasonryCard data={item} />
-                    </React.Fragment>
-                  )
-              }
-            })}
-          </div> */}
           <button className="new-works__btn btn">Смотреть все</button>
         </div>
       </section>

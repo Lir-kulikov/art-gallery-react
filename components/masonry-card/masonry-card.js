@@ -29,7 +29,6 @@ class MasonryCard extends React.Component {
   render() {
 
     const { data } = this.props
-
     return (
       <div className="masonry-card grid-masonry__item js-grid-item">
         <a className="masonry-card__img-wrapper" href="#">

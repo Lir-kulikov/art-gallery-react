@@ -13,7 +13,11 @@
 
   &__link {
     display: block;
-    padding: 8px;
+    height: 46px;
+    width: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 1px solid var(--line);
     border-radius: 50%;
     transition: background-color var(--transition) ease;

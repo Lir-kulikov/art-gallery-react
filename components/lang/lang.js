@@ -5,7 +5,7 @@ import './lang.scss'
 
 const Lang = (props) => {
 
-  const { data } = props;
+  const { data, theme } = props;
 
   const [show, setSate] = useState(false);
   const ref = useRef();
@@ -19,7 +19,7 @@ const Lang = (props) => {
   };
 
   return (
-    <div className="lang header__lang header__action-item lang--theme-dark">
+    <div className={`lang header__lang header__action-item lang--theme-${theme}`}>
         <button className="lang__btn js-lang-opener" onClick={toggleState}>{data.current.desktop}</button>
       {show && (
         <div className="lang__drop js-lang-drop" ref={ref}>

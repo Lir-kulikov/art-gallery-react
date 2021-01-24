@@ -1,9 +1,10 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef } from 'react';
 import useOutsideClick from "../use-click-outside/use-click-outside";
+import cn from 'classnames';
 
 import './account.scss'
 
-const Account = () => {
+const Account = ( { onClick, theme } ) => {
 
   const [show, setSate] = useState(false);
   const ref = useRef();
@@ -14,17 +15,19 @@ const Account = () => {
 
   const toggleState = () => {
     setSate(!show);
+    console.log(show);
   };
 
+  
+
   return (
-    <div className="account header__account header__action-item account--theme-dark">
-      <button className="account__btn" data-modal-open="modal-autorize" onClick={toggleState}>
-        <svg className="user-icon account__user-icon user-icon--theme-dark">
+    <div className={`account header__account header__action-item account--theme-${theme}`}>
+      <button className="account__btn" onClick={onClick === undefined ? toggleState : onClick} >
+        <svg className={`user-icon account__user-icon user-icon--theme-${theme}`}>
           <use xlinkHref="img/svg/sprite.svg#user" />
         </svg>
       </button>
-      {show && (
-        <div className="account__drop js-account-drop" ref={ref}>
+        <div ref={ref} className={cn('account__drop', {'is-open' : show})}>
           <ul className="account__menu-group">
             <li className="account__menu-item">
               <a className="account__menu-link" href="#">Мой профиль</a></li>
@@ -45,7 +48,6 @@ const Account = () => {
             </svg>Выйти
           </button>
         </div>
-      )}
     </div>
   );
 };

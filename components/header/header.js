@@ -5,12 +5,14 @@ import Logo from '../logo'
 import Account from '../account'
 import Search from '../search';
 import Lang from '../lang';
+import cn from 'classnames'
 
 import './header.scss'
 
 const HEADER_DATA = {
   logo: {
     desktop: '/img/logo.png',
+    desktopDark: '/img/logo-black.png',
     mobile: '/img/AG.png',
     url: '/main'
   },
@@ -67,31 +69,36 @@ const HEADER_DATA = {
 }
 
 class Header extends Component {
+
   render() {
+
+    const { onClick } = this.props;
+    const { theme } = this.props;
+
     return (
-      <header className="header undefined__header header--theme-dark">
+      <header className={`header header--theme-${theme}`}>
         <div className="container">
           <div className="header__inner">
             <div className="header__left">
-              <Logo data={HEADER_DATA.logo} />
-              <Nav data={HEADER_DATA.menu} />
+              <Logo data={HEADER_DATA.logo} theme={theme} />
+              <Nav data={HEADER_DATA.menu} theme={theme} />
             </div>
             <div className="header__action">
-              <Account />
+              <Account onClick={onClick} theme={theme} />
               <button className="header__wishlist header__action-item">
-                <svg className="heart-icon header__heart-icon heart-icon--theme-dark">
+                <svg className={`heart-icon header__heart-icon heart-icon--theme-${theme}`}>
                   <use xlinkHref="img/svg/sprite.svg#heart" />
                 </svg>
                 <span className="header__heart-icon-counter">{HEADER_DATA.counter.wishlist}</span>
               </button>
               <button className="header__basket header__action-item">
-                <svg className="basket-icon header__basket-icon basket-icon--theme-dark">
+                <svg className={`basket-icon header__basket-icon basket-icon--theme-${theme}`}>
                   <use xlinkHref="img/svg/sprite.svg#basket" />
                 </svg>
                 <span className="header__basket-icon-counter">{HEADER_DATA.counter.basket}</span>
               </button>
-              <Search />
-              <Lang data={HEADER_DATA.lang}/>
+              <Search theme={theme} />
+              <Lang data={HEADER_DATA.lang} theme={theme}/>
             </div>
           </div>
         </div>

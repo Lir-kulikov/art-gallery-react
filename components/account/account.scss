@@ -79,6 +79,8 @@
   }
 
   &__drop {
+    opacity: 0;
+    visibility: hidden;
     position: absolute;
     top: 60px;
     left: 50%;
@@ -88,6 +90,11 @@
     box-shadow: 0 0 17px 3px rgba(0, 0, 0, 0.15);
     transform: translateX(-51.3%);
     transition: var(--transition) ease;
+
+    &.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
 
     @include media('<desktop-sm') {
       top: 69px;

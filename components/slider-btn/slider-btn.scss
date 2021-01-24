@@ -1,0 +1,32 @@
+@import 'styles/_mixins.scss';
+
+.slider-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 56px;
+  height: 56px;
+  background-color: var(--white);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color var(--transition) ease;
+
+  &:not(:last-child) {
+    margin-right: 5px;
+  }
+
+  &:hover {
+    background-color: #4a4f52;
+
+    .slider-btn__icon {
+      fill: var(--white);
+    }
+  }
+
+  &__icon {
+    width: 18px;
+    height: 18px;
+    fill: var(--black);
+    transition: fill var(--transition) ease;
+  }
+}

@@ -3,7 +3,7 @@ import useOutsideClick from "../use-click-outside/use-click-outside";
 
 import './search.scss'
 
-const Search = () => {
+const Search = ( {theme} ) => {
 
   const [show, setSate] = useState(false);
   const ref = useRef();
@@ -18,8 +18,8 @@ const Search = () => {
 
   return (
     <div className="search header__search header__action-item">
-      <button className="search__icon js-search-opener" onClick={toggleState}>
-        <svg className="search-icon search__search-icon search-icon--theme-dark">
+      <button className="search__icon" onClick={toggleState}>
+        <svg className={`search-icon search__search-icon search-icon--theme-${theme}`}>
           <use xlinkHref="img/svg/sprite.svg#search" />
         </svg>
       </button>
@@ -33,7 +33,7 @@ const Search = () => {
               </svg>
             </button>
             <button className="search__btn">
-              <svg className="search-icon search__search-icon search-icon--theme-dark">
+              <svg className={`search-icon search__search-icon search-icon--theme-${theme}`}>
                 <use xlinkHref="img/svg/sprite.svg#search" />
               </svg>
             </button>

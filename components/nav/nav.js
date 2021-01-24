@@ -11,6 +11,7 @@ import './nav.scss'
 const Nav = (props) => {
 
   const { data } = props;
+  const { theme } = props;
 
   const [show, setSate] = useState(false);
   const ref = useRef();
@@ -24,22 +25,22 @@ const Nav = (props) => {
   };
 
   return (
-    <nav className="nav nav--theme-dark">
+    <nav className={`nav nav--theme-${theme}`}>
         <Burger onClick={toggleState} show={show} />
       <ul className="nav__list">
         <MediaQuery minWidth={1024}>
           {data.main.map((item, key) => (
             <li className="nav__item" key={item.name + key}>
               <Link href={item.url}>
-                <a className="nav__link nav__link--theme-dark" href="catalog.html">{item.name}</a>
+                <a className={`nav__link nav__link--theme-${theme}`} href="catalog.html">{item.name}</a>
               </Link>
             </li>
           ))}
         </MediaQuery>
         <li className="nav__item nav__item--more">
-          <a className="nav__link nav__link--drop nav__link--theme-dark">
+          <a className={`nav__link nav__link--drop nav__link--theme-${theme}`}>
             {data.additionalName}
-            <svg className="dropdown-icon nav__dropdown-icon dropdown-icon--theme-dark">
+            <svg className={`dropdown-icon nav__dropdown-icon dropdown-icon--theme-${theme}`}>
               <use xlinkHref="img/svg/sprite.svg#dropdown" />
             </svg>
           </a>

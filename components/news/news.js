@@ -6,7 +6,11 @@ import 'swiper/components/navigation/navigation.scss';
 
 import './news.scss'
 
+import SliderBtn from '../slider-btn'
+
 SwiperCore.use([Navigation]);
+
+const parentClass = 'news';
 
 const News = () => {
   return (
@@ -14,23 +18,17 @@ const News = () => {
       <div className="container news__wrapper">
         <h2 className="news__title title-lg">Новости искусства</h2>
         <div className="news__slider-buttons">
-          <button className="slider-btn slider-btn--left news__slider-btn js-swiper-news-prev">
-            <svg className="slider-btn__icon">
-              <use xlinkHref="img/svg/sprite.svg#arrow-left" />
-            </svg>
-          </button>
-          <button className="slider-btn slider-btn--right news__slider-btn js-swiper-news-next">
-            <svg className="slider-btn__icon">
-              <use xlinkHref="img/svg/sprite.svg#arrow-right" />
-            </svg>
-          </button>
+          <SliderBtn parentClass={parentClass} />
         </div>
       </div>
       <div className="section-line news__section-line" />
       <div className="container">
         <Swiper
           slidesPerView={1}
-          navigation
+          navigation={{
+          nextEl:`.${parentClass}__slider-btn--right`,
+          prevEl:`.${parentClass}__slider-btn--left`
+          }}
           speed={700}
           autoHeight={true}
           loop={true}

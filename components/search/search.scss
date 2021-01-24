@@ -84,6 +84,8 @@
   }
 
   &__icon {
+    height: 40px;
+
     .search-icon--theme-dark {
       @include media('<tablet') {
         fill: var(--black);
