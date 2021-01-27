@@ -156,14 +156,14 @@
     @include media('<tablet') {
       // max-height: 0;
       display: none;
-      overflow: hidden;
-      transition: max-height var(--transition) ease;
+      // overflow: hidden;
+      // transition: max-height var(--transition) ease;
 
-      &.is-open {
-        display: block;
-        overflow: visible;
-        // max-height: 5000px;
-      }
+      // &.is-open {
+      //   display: block;
+      //   overflow: visible;
+      //   // max-height: 5000px;
+      // }
     }
   }
 
@@ -196,32 +196,13 @@
         bottom: 0;
       }
 
-      &::after {
-        position: absolute;
-        top: 50%;
-        left: 30px;
-        content: attr(data-value);
-        opacity: 0;
-        transform: translateY(-50%);
-        transition: opacity 0.3s linear;
-        white-space: nowrap;
-      }
-
-      &.is-open {
+      &[aria-expanded='true'] {
         bottom: 0;
         transition: bottom 0.2s linear;
 
         @include media('<tablet') {
           bottom: 0;
           border-bottom: none;
-        }
-
-        span {
-          opacity: 0;
-        }
-
-        &::after {
-          opacity: 1;
         }
 
         .dropdown-icon {
@@ -275,18 +256,6 @@
   }
 
   &__tabs {
-
-    overflow: hidden;
-    //height: 0;
-    max-height: 0;
-    transition: max-height 0.3s cubic-bezier(0.1, 1, 0.3, 1);
-    //transition: height 0.5s;
-
-    &.is-open {
-      overflow: visible;
-      max-height: 2000px;
-      transition: max-height 0.3s ease-in;
-    }
 
     @include media('<tablet') {
       &.is-open {
@@ -589,7 +558,7 @@
 
   &__style-label {
     display: inline-block;
-    padding: 2 20px;
+    padding: 2px 20px;
     border: 1px solid var(--line);
     border-radius: 8px;
     color: var(--dark-2);
@@ -969,4 +938,50 @@
   &__rail-x {
     display: none !important;
   }
+}
+
+.rc-slider {
+  border-radius: 0;
+  &-rail {
+    background-color: var(--line);
+    border-radius: 0;
+  }
+
+  &-track {
+    background-color: var(--black);
+  }
+
+  &-handle {
+    top: 2px;
+    flex-basis: 0;
+    padding: 8px;
+    border: 2px solid var(--black);
+    background-color: var(--line);
+    transition: background-color .2s linear;
+    &:hover,
+    &:focus,
+    &-click-focused {
+      background-color: var(--black);
+      border: 2px solid var(--black);
+    }
+
+    &-dragging.rc-slider-handle-dragging.rc-slider-handle-dragging {
+      background-color: var(--black);
+      border: 2px solid var(--black);
+      box-shadow: none;
+    }
+  }
+}
+
+.rc-slider-size {
+  width: 181px;
+}
+
+.rc-slider-dot {
+  display: none;
+}
+
+.rc-slider-mark-text {
+  color: var(--black);
+  font-size: 14px;
 }

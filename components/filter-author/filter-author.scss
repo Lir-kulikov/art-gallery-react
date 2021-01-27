@@ -1,0 +1,107 @@
+@import 'styles/_mixins.scss';
+
+.filter-author {
+  z-index: 20;
+  position: relative;
+  width: 620px;
+  max-height: 40px;
+  border: none;
+
+  &__control.filter-author__control {
+    border-radius: 0;
+    border: none;
+  }
+
+  &__placeholder.filter-author__placeholder {
+    display: none;
+  }
+
+  &__indicator-separator.filter-author__indicator-separator {
+    display: none;
+  }
+
+  &__indicator.filter-author__dropdown-indicator {
+    position: relative;
+    cursor: pointer;
+    width: 40px;
+    height: 100%;
+
+    svg {
+      display: none;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 15px;
+      right: 14px;
+      width: 10px;
+      height: 6px;
+      background-image: url(/img/dropdown.svg);
+      background-repeat: no-repeat;
+      background-size: 100%;
+      color: #000;
+    }
+  }
+
+  .filter-author__indicator.filter-author__clear-indicator {
+    display: none;
+  }
+
+  &__value-container.filter-author__value-container {
+    padding: 4px 15px;
+  }
+
+  &__menu.filter-author__menu {
+    border-radius: 0;
+    margin: 0;
+    box-shadow: 0 8px 10px -4px rgba(0, 0, 0, 0.59);
+  }
+
+  &__menu-list.filter-author__menu-list {
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__control.filter-author__control {
+    color: var(--black);
+  }
+
+  &__option.filter-author__option {
+    color: var(--black);
+    font-size: 14px;
+    padding: 5px 10px;
+
+    &--is-selected {
+      background-color: var(--line);
+      color: var(--white);
+
+      &:hover {
+        background-color: var(--line);
+        color: var(--white);
+      }
+    }
+
+    &--is-focused {
+      background-color: var(--white);
+      color: black;
+    }
+
+    &:hover {
+      background-color: var(--dark-3);
+      color: var(--white);
+    }
+  }
+
+  &__group-heading.filter-author__group-heading {
+    font-size: 23px;
+    color: var(--black);
+    font-weight: 700;
+  }
+
+  &__multi-value.filter-author__multi-value {
+    display: none;
+  }
+}

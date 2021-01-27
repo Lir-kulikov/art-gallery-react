@@ -86,11 +86,13 @@ const Product = () => {
         },
         download: {
           icon: '/img/svg/sprite.svg#download',
-          text: 'Цифровая копия'
+          text: 'Цифровая копия',
+          mobileText: 'Скачать копию'
         },
         hidden: {
           icon: '/img/svg/sprite.svg#eye-close',
-          text: 'Больше не показывать картину'
+          text: 'Больше не показывать картину',
+          mobileText: 'Не показывать'
         }
       }
     }

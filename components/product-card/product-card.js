@@ -3,10 +3,11 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Thumbs, Navigation } from 'swiper';
 import Share from '../share';
 import AnimateHeight from 'react-animate-height';
-import FsLightbox from 'fslightbox-react';
+import ReactBnbGallery from 'react-bnb-gallery';
 import cn from 'classnames';
 SwiperCore.use([Navigation, Thumbs]);
 
+import 'react-bnb-gallery/dist/style.css'
 import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
 import './product-card.scss';
@@ -19,7 +20,8 @@ const ProductCard = ({ data }) => {
   const [heightDescription, setHeightDescription] = useState(0);
   const [favourites, setFavourites] = useState(false);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const [lightbox, setLightbox] = useState(false);
+  const [lightIndex, setLightIndex] = useState(null);
+ 
 
   const toggleHeightSpecs = () => {
     setHeightSpecs(heightSpecs === 0 ? 'auto' : 0);
@@ -37,6 +39,8 @@ const ProductCard = ({ data }) => {
     <div className="product-card product__product-card">
       <div className="container">
         <div className="product-card__inner">
+          <h1 className="product-card__title product-card__title--mobile">{data.title}</h1>
+          <a className="product-card__author product-card__author--mobile" href={data.author.url}>{data.author.name}</a>
           <div className="product-card__details">
             <div className="product-card__gallery">
             <Swiper
@@ -86,10 +90,20 @@ const ProductCard = ({ data }) => {
               {data.pictures.map((item, key) => {
                 return (
                   <SwiperSlide key={key}>
-                    <img className="product-card__img" src={item} onClick={() => setLightbox(!lightbox)} />
+                    <img className="product-card__img"
+                      src={item}
+                      onClick={() => setLightIndex(key)}
+                       />
                   </SwiperSlide>
                 );
               })}
+            <ReactBnbGallery
+              show={lightIndex !== null}
+              photos={data.pictures}
+              onClose={() => setLightIndex(null)}
+              activePhotoIndex={lightIndex}
+              showThumbnails={false}
+            />
               <button className="js-swiper-product-next">
                 <svg className="long-arrow-icon">
                   <use xlinkHref="img/svg/sprite.svg#long-arrow" />
@@ -101,10 +115,6 @@ const ProductCard = ({ data }) => {
                 </svg>
               </button>
             </Swiper>
-            <FsLightbox
-              toggler={lightbox}
-              sources={data.pictures}
-            />
             </div>
             <div className="product-card__actions">
               <div className="product-card__actions-row">
@@ -164,19 +174,24 @@ const ProductCard = ({ data }) => {
                   </svg>
                   <span className="product-card__action-mobile-text">{data.actions.like.text}</span>
                 </button>
-                <button className="product-card__mobile-btn js-icon">
-                  <svg className="heart-icon product-card__action-mobile-icon heart-icon--undefined">
-                    <use xlinkHref="/img/svg/sprite.svg#heart" />
-                  </svg><span className="product-card__action-mobile-text">В избранное</span>
+                <button className={cn("product-card__mobile-btn", {'is-active' : favourites})} onClick={toggleFavourites}>
+                  <svg className="heart-icon product-card__action-mobile-icon">
+                    <use xlinkHref={"/img/svg/sprite.svg#heart"} />
+                  </svg>
+                  <span className="product-card__action-mobile-text">{favourites ? 'В избранном' : 'В избранное'}</span>
                 </button>
                 <button className="product-card__mobile-btn">
                   <svg className="eye-close-icon product-card__action-mobile-icon">
                     <use xlinkHref="img/svg/sprite.svg#eye-close" />
-                  </svg><span className="product-card__action-mobile-text">Не показывать</span>
-                </button><a className="product-card__mobile-btn" href="#" download="download">
+                  </svg>
+                  <span className="product-card__action-mobile-text">{data.actions.hidden.mobileText}</span>
+                </button>
+                <a className="product-card__mobile-btn" href="#" download="download">
                   <svg className="download-icon product-card__action-mobile-icon">
                     <use xlinkHref="/img/svg/sprite.svg#download" />
-                  </svg><span className="product-card__action-mobile-text">Скачать копию</span></a>
+                  </svg>
+                  <span className="product-card__action-mobile-text">Скачать копию</span>
+                 </a>
               </div>
               <Share parentClass={parentClass} />
             </div>
@@ -207,7 +222,7 @@ const ProductCard = ({ data }) => {
                           <td className="product-card__table-col">{item.value}</td>
                         </tr>
                       );
-                    })};
+                    })}
                   </tbody>
                 </table>
               </div>
