@@ -1,15 +1,19 @@
-import './article-card.scss'
+import './article-card.scss';
 
-const ArticleCard = () => {
+const ArticleCard = ({ data }) => {
   return (
-    <div className="article-card start__card">
-      <a className="article-card__img-link" href="#">
-        <img className="article-card__img" src="img/start-card.jpg" />
+    <div className='article-card start__card'>
+      <a className='article-card__img-link' href={data.url}>
+        <img className='article-card__img' src={data.picture} />
       </a>
-      <a className="article-card__category" href="#">Выбор экспертов</a>
-      <a className="article-card__title" href="#">Обзор нашего экспетра Элеоноры Рубинштейн-Загорской</a>
+      <a className='article-card__category' href={data.category.url}>
+        {data.category.text}
+      </a>
+      <a className='article-card__title' href={data.url}>
+        {data.title}
+      </a>
     </div>
   );
 };
 
-export default ArticleCard
+export default ArticleCard;

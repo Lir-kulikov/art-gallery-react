@@ -1,0 +1,98 @@
+@import 'styles/_mixins.scss';
+
+.modal-res {
+  .modal__container {
+    z-index: 10000;
+    width: 531px;
+    padding-top: 50px;
+    padding-right: 45px;
+    padding-bottom: 50px;
+    padding-left: 45px;
+
+    @include media('<desktop') {
+      width: 370px;
+      padding-top: 45px;
+      padding-right: 40px;
+      padding-bottom: 40px;
+      padding-left: 40px;
+    }
+
+    @include media('<tablet') {
+      width: 370px;
+      padding-top: 45px;
+      padding-right: 20px;
+      padding-bottom: 20px;
+      padding-left: 20px;
+    }
+  }
+
+  &__header {
+    position: relative;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+
+    &::after {
+      position: absolute;
+      bottom: -1px;
+      left: 50%;
+      width: 40px;
+      height: 1px;
+      background-color: var(--black);
+      content: '';
+      transform: translateX(-50%);
+
+      @include media('<tablet') {
+        width: 20px;
+      }
+    }
+
+    @include media('<desktop') {
+      padding-bottom: 15px;
+    }
+  }
+
+  &__body {
+    padding-top: 35px;
+  }
+
+  &__title {
+    @include media('<desktop') {
+      font-size: 24px;
+
+      @include media('<tablet') {
+        font-size: 22px;
+      }
+    }
+  }
+
+  &__btn {
+    width: calc(100% - 8px);
+    padding: 14px;
+    margin-top: 30px;
+    margin-right: 4px;
+    margin-bottom: 20px;
+    margin-left: 4px;
+
+    @include media('<desktop') {
+      margin-bottom: 10px;
+
+      &.btn-blue {
+        padding: 8px;
+        font-size: 12px;
+      }
+    }
+
+    @include media('<tablet') {
+      &.btn-blue {
+        margin-top: 20px;
+        margin-bottom: 12px;
+      }
+    }
+  }
+}
+
+.form-res {
+  &__item {
+    position: relative;
+  }
+}

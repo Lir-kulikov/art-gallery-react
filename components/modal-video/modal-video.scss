@@ -1,0 +1,40 @@
+@import 'styles/_mixins.scss';
+
+.modal-video {
+  
+  height: 100%;
+
+  &__close {
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 40px;
+    color: var(--white);
+    line-height: 0.6;
+    transition: color var(--transition);
+
+    &:hover {
+      color: var(--hover);
+    }
+
+    @include media('<tablet') {
+      right: 50%;
+      transform: translateX(50%);
+    }
+
+    &:hover {
+      &::before,
+      &::after {
+        background-color: var(--hover);
+      }
+    }
+
+    &::before,
+    &::after {
+
+      transition: background-color var(--transition) ease;
+    }
+  }
+}

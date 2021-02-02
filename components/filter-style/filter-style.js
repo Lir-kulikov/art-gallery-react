@@ -1,7 +1,23 @@
+import AnimateHeight from 'react-animate-height';
+
 import './filter-style.scss'
 
-const FilterStyle = () => {
+const FilterStyle = ({toggleFilterStyle, heightFilterStyle}) => {
   return (
+    <>
+    <div
+      className="filter__accordion-header"
+      aria-expanded={heightFilterStyle !== 0}
+      aria-controls='toggle-style-filters'
+      onClick={toggleFilterStyle}
+    >
+      Стиль
+    </div>
+    <AnimateHeight
+      id='toggle-style-filters'
+      duration={ 300 }
+      height={ heightFilterStyle }
+    >
     <div className="filter__style filter__tab-body">
       <div className="filter__tab-body-inner">
         <div className="filter__style-tag">
@@ -38,6 +54,8 @@ const FilterStyle = () => {
         </div>
       </div>
     </div>
+    </AnimateHeight>
+    </>
   );
 };
 

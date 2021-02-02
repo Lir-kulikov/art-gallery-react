@@ -5,25 +5,27 @@
 }
 
 .filter {
+
+  margin-bottom: 1em;
+
   &__main {
     margin-top: 50px;
     margin-bottom: 40px;
 
     @include media('<tablet') {
       overflow: hidden;
-      max-height: 0;
       padding: 0 10px;
       margin-top: 0;
       margin-right: auto;
-      margin-bottom: 0;
+      //margin-bottom: 0;
       margin-left: auto;
       opacity: 0;
       transition: max-height var(--transition) ease, margin var(--transition) ease, opacity 0.4s ease;
 
       &.is-open {
-        overflow: visible;
         margin-bottom: 18px;
         opacity: 1;
+        overflow: visible;
       }
     }
   }
@@ -75,6 +77,7 @@
     color: var(--black);
     font-size: 16px;
     letter-spacing: 0.4px;
+    flex-shrink: 0;
 
     @include media('>tablet', '<desktop') {
       &--tablet-top {
@@ -159,17 +162,16 @@
       // overflow: hidden;
       // transition: max-height var(--transition) ease;
 
-      // &.is-open {
-      //   display: block;
-      //   overflow: visible;
-      //   // max-height: 5000px;
-      // }
+      &.is-active {
+        display: block;
+        overflow: visible;
+      }
     }
   }
 
   &__btn {
     display: inline-flex;
-    min-width: 200px;
+    min-width: 204px;
     align-items: center;
     padding: 10px 13px 10px 30px;
     border: 1px solid #e4e4e4;
@@ -337,9 +339,7 @@
 
     @include media('<tablet') {
       overflow: hidden;
-      max-height: 0;
       padding: 0;
-      opacity: 0;
       transition: max-height var(--transition) ease, opacity var(--transition) ease;
 
       &.is-open {
@@ -379,7 +379,6 @@
 
     @include media('<tablet') {
       max-height: 20px;
-      color: rgba(0, 0, 0, 0);
 
       &::after {
         position: absolute;
@@ -510,52 +509,6 @@
     }
   }
 
-  .js-autocomplete-item {
-    position: relative;
-    display: inline-block;
-    padding: 2px 30px 2px 10px;
-    border: 1px solid var(--line);
-    margin-bottom: 12px;
-    border-radius: 8px;
-    color: var(--black);
-    cursor: pointer;
-    font-size: 16px;
-    transition: border 0.1s linear;
-
-    @include media('<tablet') {
-      padding: 2px 30px 2px 8px;
-      border-radius: 4px;
-      font-size: 12px;
-    }
-
-    &:not(:last-child) {
-      margin-right: 12px;
-    }
-
-    &:hover {
-      border: 1px solid var(--dark-3);
-    }
-
-    &::after {
-      position: absolute;
-      top: 50%;
-      right: 10px;
-      width: 12px;
-      height: 12px;
-      background-image: url('/img/close.svg');
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: 100%;
-      content: '';
-      transform: translateY(-50%) scale(0.8);
-
-      @include media('<tablet') {
-        right: 8px;
-        transform: translateY(-50%) scale(0.7);
-      }
-    }
-  }
-
   &__style-label {
     display: inline-block;
     padding: 2px 20px;
@@ -620,12 +573,13 @@
       letter-spacing: 0.44px;
       transition: margin var(--transition) ease;
 
-      &.is-open {
+      
+      &[aria-expanded='true'] {
         margin-bottom: 10px;
-      }
 
-      &.is-open .filter__dropdown-icon {
-        transform: rotate(180deg);
+        .filter__dropdown-icon {
+          transform: rotate(180deg);
+        }
       }
     }
   }
@@ -643,6 +597,9 @@
     display: none;
 
     @include media('<tablet') {
+      &:first-child {
+        border-top: 1px solid var(--line);
+      }
       display: block;
       padding: 10px 20px;
       margin: 0 -20px;
@@ -670,12 +627,23 @@
 
 .ui-slider {
   position: relative;
+  
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 
   @include media('<tablet') {
     display: block;
+  }
+
+  &--type-orient {
+    flex-direction: row;
+    align-items: center;
+
+    @include media('<tablet') {
+      display: flex;
+      margin-top: 40px;
+    }
   }
 
   &__fields {
@@ -753,6 +721,7 @@
     }
 
     .noUi-handle {
+      touch-action: none;
       top: -8px;
       width: auto;
       height: auto;
@@ -822,7 +791,7 @@
     padding: 20px 0;
 
     @include media('<tablet') {
-      padding: 41px 0 20px;
+      padding: 46px 0 20px;
       margin-bottom: 10px;
 
       .filter__item-title {
@@ -854,6 +823,7 @@
 
       .filter__item-title {
         position: static;
+        margin-right: 15px;
       }
     }
 
@@ -945,6 +915,7 @@
   &-rail {
     background-color: var(--line);
     border-radius: 0;
+    
   }
 
   &-track {
@@ -970,11 +941,23 @@
       border: 2px solid var(--black);
       box-shadow: none;
     }
+
+    // &-1 {
+    //   margin-left: 8px;
+    // }
+
+    // &-2 {
+    //   margin-left: -8px
+    // }
   }
 }
 
 .rc-slider-size {
   width: 181px;
+
+  @include media('<tablet') {
+    width: 100%;
+  }
 }
 
 .rc-slider-dot {
@@ -985,3 +968,8 @@
   color: var(--black);
   font-size: 14px;
 }
+
+// .rc-slider-mark {
+//   width: calc(100% - 14px);
+//   margin-left: 7px;
+// }

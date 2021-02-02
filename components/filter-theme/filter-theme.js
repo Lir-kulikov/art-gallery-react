@@ -1,7 +1,23 @@
+import AnimateHeight from 'react-animate-height';
+
 import './filter-theme.scss'
 
-const FilterTheme = () => {
+const FilterTheme = ({toggleFilterTheme, heightFilterTheme}) => {
   return (
+    <>
+    <div
+      className="filter__accordion-header"
+      aria-expanded={heightFilterTheme !== 0}
+      aria-controls='toggle-theme-filters'
+      onClick={toggleFilterTheme}
+    >
+      Тема
+    </div>
+    <AnimateHeight
+      id='toggle-theme-filters'
+      duration={ 300 }
+      height={ heightFilterTheme }
+    >
     <div className="filter__style filter__tab-body">
       <div className="filter__tab-body-inner">
         <div className="filter__style-tag">
@@ -18,6 +34,8 @@ const FilterTheme = () => {
         </div>
       </div>
     </div>
+    </AnimateHeight>
+    </>
   );
 };
 

@@ -1,7 +1,23 @@
+import AnimateHeight from 'react-animate-height';
+
 import './filter-material.scss'
 
-const FilterMaterial = () => {
+const FilterMaterial = ({toggleFilterMaterial, heightFilterMaterial}) => {
   return (
+    <>
+    <div
+      className="filter__accordion-header"
+      aria-expanded={heightFilterMaterial !== 0}
+      aria-controls='toggle-material-filters'
+      onClick={toggleFilterMaterial}
+    >
+      Материал
+    </div>
+    <AnimateHeight
+      id='toggle-material-filters'
+      duration={ 300 }
+      height={ heightFilterMaterial }
+    >
     <div className="filter__style filter__tab-body">
       <div className="filter__tab-body-inner">
         <div className="filter__style-tag">
@@ -18,6 +34,8 @@ const FilterMaterial = () => {
         </div>
       </div>
     </div>
+    </AnimateHeight>
+    </>
   );
 };
 

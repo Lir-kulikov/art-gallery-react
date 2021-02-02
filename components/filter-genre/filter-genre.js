@@ -1,7 +1,23 @@
+import AnimateHeight from 'react-animate-height';
+
 import './filter-genre.scss'
 
-const FilterGenre = () => {
+const FilterGenre = ({toggleFilterGenre, heightFilterGenre}) => {
   return (
+    <>
+    <div
+      className="filter__accordion-header"
+      aria-expanded={heightFilterGenre !== 0}
+      aria-controls='toggle-genre-filters'
+      onClick={toggleFilterGenre}
+    >
+      Стиль
+    </div>
+    <AnimateHeight
+      id='toggle-genre-filters'
+      duration={ 300 }
+      height={ heightFilterGenre }
+    >
     <div className="filter__style filter__tab-body">
       <div className="filter__tab-body-inner">
         <div className="filter__style-tag">
@@ -30,6 +46,8 @@ const FilterGenre = () => {
         </div>
       </div>
     </div>
+    </AnimateHeight>
+    </>
   );
 };
 

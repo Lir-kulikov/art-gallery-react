@@ -7,7 +7,7 @@ import './hero.scss';
 
 SwiperCore.use([Pagination]);
 
-const Hero = ( {data} ) => {
+const Hero = ({ data }) => {
 
   return (
     <section className="hero">
