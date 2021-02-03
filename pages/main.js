@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import Head from 'next/head';
-import {AppContext} from '../context/context';
+import { AppContext } from '../context/context';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import Hero from '../components/hero';
@@ -17,194 +17,155 @@ import ModalVideo from '../components/modal-video';
 
 import '../components/modal/modal.scss';
 
-const MAIN_DATA = {
-  head: {
-    title: 'ArtGallery - Главная'
-  },
-  theme: 'dark',
-  heroItems: [
-    {
-      id: 0,
-      picture: '/img/hero-slide-1.jpg',
-      subtitle: 'Новое на этой неделе',
-      title: 'Лучшие фигуративные произведения',
-      text: 'Новые оригинальные работы, выбранные нашим эспертом',
-      button: 'Открыть',
-    },
-    {
-      id: 1,
-      picture: '/img/hero-slide-2.jpg',
-      subtitle: 'Новое на этой неделе',
-      title: 'Лучшие фигуративные произведения',
-      text: 'Новые оригинальные работы, выбранные нашим эспертом',
-      button: 'Открыть',
-    },
-    {
-      id: 2,
-      picture: '/img/hero-slide-1.jpg',
-      subtitle: 'Новое на этой неделе',
-      title: 'Лучшие фигуративные произведения',
-      text: 'Новые оригинальные работы, выбранные нашим эспертом',
-      button: 'Открыть',
-    },
-  ],
-  start: {
-    title: 'Не знаете с чего начать?',
-    video: {
-      title: 'Видеобзор нашего ресурса возможности для пользователя',
-      picture: '/img/video-start.jpg',
-      url: 'https://www.youtube.com/embed/h3RNElMbdUY?autoplay=1',
-    },
-    article: {
-      title: 'Обзор нашего экспетра Элеоноры Рубинштейн-Загорской',
-      picture: '/img/start-card.jpg',
-      url: '#',
-      category: {
-        text: 'Выбор экспертов',
-        url: '#'
-      },
-    },
-  },
-  styleReviewItems: [
-    {
-      id: 0,
-      picture: '/img/style-card-1.jpg',
-      url: '#',
-      title: 'Современное НЮ',
-      category: 'Новое изобразительное искусство',
-    },
-    {
-      id: 0,
-      picture: '/img/style-card-2.jpg',
-      url: '#',
-      title: 'Вдохновение Уорхолом',
-      category: 'Новый Поп Арт',
-    },
-    {
-      id: 0,
-      picture: '/img/style-card-3.jpg',
-      url: '#',
-      title: 'Вдохновение Гансом Хофманном',
-      category: 'Новый абстрактный экспрессионизм',
-    },
-    {
-      id: 0,
-      picture: '/img/style-card-4.jpg',
-      url: '#',
-      title: 'Современное НЮ',
-      category: 'Новое изобразительное искусство',
-    },
-    {
-      id: 0,
-      picture: '/img/style-card-5.jpg',
-      url: '#',
-      title: 'Вдохновение Уорхолом',
-      category: 'Новый абстрактный экспрессионизм',
-    },
-    {
-      id: 0,
-      picture: '/img/style-card-6.jpg',
-      url: '#',
-      title: 'Вдохновение Гансом Хофманном',
-      category: 'Новый Поп Арт',
-    },
-    {
-      id: 0,
-      picture: '/img/style-card-1.jpg',
-      url: '#',
-      title: 'Современное НЮ',
-      category: 'Новое изобразительное искусство',
-    },
-    {
-      id: 0,
-      picture: '/img/style-card-2.jpg',
-      url: '#',
-      title: 'Вдохновение Уорхолом',
-      category: 'Новый Поп Арт',
-    },
-    {
-      id: 0,
-      picture: '/img/style-card-3.jpg',
-      url: '#',
-      title: 'Современное НЮ',
-      category: 'Новый абстрактный экспрессионизм',
-    },
-  ],
-};
+// const data = {
+//   head: {
+//     title: 'ArtGallery - Главная',
+//   },
+//   theme: 'dark',
+//   heroItems: [
+//     {
+//       id: 0,
+//       picture: '/img/hero-slide-1.jpg',
+//       subtitle: 'Новое на этой неделе',
+//       title: 'Лучшие фигуративные произведения',
+//       text: 'Новые оригинальные работы, выбранные нашим эспертом',
+//       button: 'Открыть',
+//     },
+//     {
+//       id: 1,
+//       picture: '/img/hero-slide-2.jpg',
+//       subtitle: 'Новое на этой неделе',
+//       title: 'Лучшие фигуративные произведения',
+//       text: 'Новые оригинальные работы, выбранные нашим эспертом',
+//       button: 'Открыть',
+//     },
+//     {
+//       id: 2,
+//       picture: '/img/hero-slide-1.jpg',
+//       subtitle: 'Новое на этой неделе',
+//       title: 'Лучшие фигуративные произведения',
+//       text: 'Новые оригинальные работы, выбранные нашим эспертом',
+//       button: 'Открыть',
+//     },
+//   ],
+//   start: {
+//     title: 'Не знаете с чего начать?',
+//     video: {
+//       title: 'Видеобзор нашего ресурса возможности для пользователя',
+//       picture: '/img/video-start.jpg',
+//       url: 'https://www.youtube.com/embed/h3RNElMbdUY?autoplay=1',
+//     },
+//     article: {
+//       title: 'Обзор нашего экспетра Элеоноры Рубинштейн-Загорской',
+//       picture: '/img/start-card.jpg',
+//       url: '#',
+//       category: {
+//         text: 'Выбор экспертов',
+//         url: '#',
+//       },
+//     },
+//   },
+//   styleReviewItems: [
+//     {
+//       id: 0,
+//       picture: '/img/style-card-1.jpg',
+//       url: '#',
+//       title: 'Современное НЮ',
+//       category: 'Новое изобразительное искусство',
+//     },
+//     {
+//       id: 0,
+//       picture: '/img/style-card-2.jpg',
+//       url: '#',
+//       title: 'Вдохновение Уорхолом',
+//       category: 'Новый Поп Арт',
+//     },
+//     {
+//       id: 0,
+//       picture: '/img/style-card-3.jpg',
+//       url: '#',
+//       title: 'Вдохновение Гансом Хофманном',
+//       category: 'Новый абстрактный экспрессионизм',
+//     },
+//     {
+//       id: 0,
+//       picture: '/img/style-card-4.jpg',
+//       url: '#',
+//       title: 'Современное НЮ',
+//       category: 'Новое изобразительное искусство',
+//     },
+//     {
+//       id: 0,
+//       picture: '/img/style-card-5.jpg',
+//       url: '#',
+//       title: 'Вдохновение Уорхолом',
+//       category: 'Новый абстрактный экспрессионизм',
+//     },
+//     {
+//       id: 0,
+//       picture: '/img/style-card-6.jpg',
+//       url: '#',
+//       title: 'Вдохновение Гансом Хофманном',
+//       category: 'Новый Поп Арт',
+//     },
+//     {
+//       id: 0,
+//       picture: '/img/style-card-1.jpg',
+//       url: '#',
+//       title: 'Современное НЮ',
+//       category: 'Новое изобразительное искусство',
+//     },
+//     {
+//       id: 0,
+//       picture: '/img/style-card-2.jpg',
+//       url: '#',
+//       title: 'Вдохновение Уорхолом',
+//       category: 'Новый Поп Арт',
+//     },
+//     {
+//       id: 0,
+//       picture: '/img/style-card-3.jpg',
+//       url: '#',
+//       title: 'Современное НЮ',
+//       category: 'Новый абстрактный экспрессионизм',
+//     },
+//   ],
+// };
 
-const Main = () => {
-  const { closeModalVideo, modalVideo } = useContext(AppContext);
-  //const [modalVideo, setModalVideo] = useState(false);
-  const [modalAutorize, setModalAutorize] = useState(false);
-  const [modalReg, setModalReg] = useState(false);
-  const [modalRes, setModalRes] = useState(false);
-  const [modalSuccess, setModalSuccess] = useState(false);
+const Main = ({ data }) => {
+  const {
+    modalVideo,
+    closeModalVideo,
+    
+    modalReg,
+    closeModalReg,
 
-  // const openModalVideo = () => {
-  //   setModalVideo(true);
-  // };
+    modalRes,
+    closeModalRes,
 
-  // const closeModalVideo = () => {
-  //   setModalVideo(false);
-  // };
+    modalAutorize,
+    closeModalAutorize,
 
-  // const openModalAutorize = () => {
-  //   setModalAutorize(true);
-  //   setModalRes(false);
-  //   setModalReg(false);
-  // };
-
-  // const closeModalAutorize = () => {
-  //   setModalAutorize(false);
-  // };
-
-  // const openModalReg = () => {
-  //   setModalReg(true);
-  //   setModalAutorize(false);
-  //   setModalRes(false);
-  // };
-
-  // const closeModalReg = () => {
-  //   setModalReg(false);
-  // };
-
-  const openModalRes = () => {
-    setModalRes(true);
-    setModalAutorize(false);
-    setModalReg(false);
-  };
-
-  const closeModalRes = () => {
-    setModalRes(false);
-  };
-
-  const openModalSuccess = () => {
-    setModalRes(false);
-    setModalSuccess(true);
-  };
-
-  const closeModalSuccess = () => {
-    setModalSuccess(false);
-  };
+    modalSuccess,
+    closeModalSuccess
+  } = useContext(AppContext);
 
   return (
     <div className='overflow-limiter' id='main'>
       <Head>
-        <title>{MAIN_DATA.head.title}</title>
-        <link
-          rel='stylesheet'
-        />
+        <title>{data.head.title}</title>
+        <link rel='stylesheet' />
         <script src='https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js'></script>
       </Head>
-      <Header onClick={openModalAutorize} theme={MAIN_DATA.theme} />
+      <Header theme={data.theme} data={data.header} />
       <main>
-        <Hero data={MAIN_DATA} />
-        <Start data={MAIN_DATA.start} />
-        <NewWorks />
-        <StyleReview data={MAIN_DATA.styleReviewItems} />
-        <News />
+        <Hero data={data} />
+        <Start data={data.start} />
+        <NewWorks data={data.newWorks} />
+        <StyleReview data={data.styleReview} />
+        <News data={data.news} />
       </main>
-      <Footer />
+      <Footer data={data.footer} />
       <Modal
         isOpen={modalVideo}
         onRequestClose={closeModalVideo}
@@ -213,8 +174,7 @@ const Main = () => {
         ariaHideApp={false}
       >
         <ModalVideo
-          closeModalVideo={closeModalVideo}
-          data={MAIN_DATA.start.video.url}
+          data={data.start.video.url}
         />
       </Modal>
       <Modal
@@ -229,12 +189,7 @@ const Main = () => {
           type='button'
           onClick={closeModalAutorize}
         />
-        <ModalAutorize
-          openModalReg={openModalReg}
-          closeModalAutorize={closeModalAutorize}
-          openModalRes={openModalRes}
-          modalAutorize={modalAutorize}
-        />
+        <ModalAutorize data={data.modalAutorize} />
       </Modal>
       <Modal
         isOpen={modalReg}
@@ -248,7 +203,7 @@ const Main = () => {
           type='button'
           onClick={closeModalReg}
         />
-        <ModalReg openModalAutorize={openModalAutorize} />
+        <ModalReg />
       </Modal>
       <Modal
         isOpen={modalRes}
@@ -262,10 +217,7 @@ const Main = () => {
           type='button'
           onClick={closeModalRes}
         />
-        <ModalRes
-          openModalAutorize={openModalAutorize}
-          openModalSuccess={openModalSuccess}
-        />
+        <ModalRes />
       </Modal>
       <Modal
         isOpen={modalSuccess}
@@ -284,5 +236,13 @@ const Main = () => {
     </div>
   );
 };
+
+export async function getServerSideProps() {
+  const res = await fetch(`http://localhost:3000/api/data-main`);
+  const data = await res.json();
+  return {
+    props: { data },
+  };
+}
 
 export default Main;

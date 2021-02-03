@@ -77,9 +77,22 @@ export function AppWrapper({ children }) {
 
   return (
     <AppContext.Provider value={{
+      modalVideo,
       openModalVideo,
       closeModalVideo,
-      modalVideo
+      modalAutorize,
+      openModalAutorize,
+      closeModalAutorize,
+      modalSuccess,
+      openModalSuccess,
+      closeModalSuccess,
+      modalRes,
+      openModalRes,
+      closeModalRes,
+      modalReg,
+      openModalReg,
+      closeModalReg,
+      
     }}
     >
       {children}

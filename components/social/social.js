@@ -1,28 +1,24 @@
-import './social.scss'
+import './social.scss';
 
-const Social = () => {
+const Social = ({ data }) => {
+
   return (
-    <div className="social footer__social">
-      <ul className="social__list">
-        <li className="social__item"><a className="social__link" href="#" target="_blank">
-            <svg className="social__icon">
-              <use xlinkHref="img/svg/sprite.svg#vk" />
-            </svg></a></li>
-        <li className="social__item"><a className="social__link" href="#" target="_blank">
-            <svg className="social__icon">
-              <use xlinkHref="img/svg/sprite.svg#facebook" />
-            </svg></a></li>
-        <li className="social__item"><a className="social__link" href="#" target="_blank">
-            <svg className="social__icon">
-              <use xlinkHref="img/svg/sprite.svg#odnoklassniki" />
-            </svg></a></li>
-        <li className="social__item"><a className="social__link" href="#" target="_blank">
-            <svg className="social__icon">
-              <use xlinkHref="img/svg/sprite.svg#instagram" />
-            </svg></a></li>
+    <div className='social footer__social'>
+      <ul className='social__list'>
+        {data.items.map((item, key) => {
+          return (
+            <li className='social__item' key={key}>
+              <a className='social__link' href={item.url} target='_blank'>
+                <svg className='social__icon'>
+                  <use xlinkHref={item.icon} />
+                </svg>
+              </a>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
 };
 
-export default Social
+export default Social;

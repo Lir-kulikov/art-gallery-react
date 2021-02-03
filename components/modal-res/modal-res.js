@@ -1,9 +1,16 @@
+import React, { useContext } from 'react';
+import {AppContext} from '../../context/context';
+
 import { useForm } from 'react-hook-form';
 import cn from 'classnames';
 
 import './modal-res.scss';
 
-const ModalRes = ({ openModalAutorize, openModalSuccess }) => {
+
+const ModalRes = () => {
+
+  const { openModalAutorize, openModalSuccess } = useContext(AppContext);
+
   const { register, handleSubmit, errors, reset } = useForm({
     mode: 'onBlur',
     reValidateMode: 'onChange',

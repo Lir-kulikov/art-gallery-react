@@ -1,15 +1,16 @@
-import React, { Component } from 'react'
+import React, { Component, useContext } from 'react';
+import { AppContext } from '../../context/context';
 
-import Nav from '../nav'
-import Logo from '../logo'
-import Account from '../account'
+import Nav from '../nav';
+import Logo from '../logo';
+import Account from '../account';
 import Search from '../search';
 import Lang from '../lang';
-import cn from 'classnames'
+import cn from 'classnames';
 
-import './header.scss'
+import './header.scss';
 
-const HEADER_DATA = {
+const data = {
   logo: {
     desktop: '/img/logo.png',
     desktopDark: '/img/logo-black.png',
@@ -69,42 +70,47 @@ const HEADER_DATA = {
 }
 
 class Header extends Component {
-
   render() {
-
-    const { onClick } = this.props;
-    const { theme } = this.props;
+    const { theme, data } = this.props;
 
     return (
       <header className={`header header--theme-${theme}`}>
-        <div className="container">
-          <div className="header__inner">
-            <div className="header__left">
-              <Logo data={HEADER_DATA.logo} theme={theme} />
-              <Nav data={HEADER_DATA.menu} theme={theme} />
+        <div className='container'>
+          <div className='header__inner'>
+            <div className='header__left'>
+              <Logo data={data.logo} theme={theme} />
+              <Nav data={data.menu} theme={theme} />
             </div>
-            <div className="header__action">
-              <Account onClick={onClick} theme={theme} />
-              <button className="header__wishlist header__action-item">
-                <svg className={`heart-icon header__heart-icon heart-icon--theme-${theme}`}>
-                  <use xlinkHref="img/svg/sprite.svg#heart" />
+            <div className='header__action'>
+              <Account theme={theme} />
+              <button className='header__wishlist header__action-item'>
+                <svg
+                  className={`heart-icon header__heart-icon heart-icon--theme-${theme}`}
+                >
+                  <use xlinkHref='img/svg/sprite.svg#heart' />
                 </svg>
-                <span className="header__heart-icon-counter">{HEADER_DATA.counter.wishlist}</span>
+                <span className='header__heart-icon-counter'>
+                  {data.counter.wishlist}
+                </span>
               </button>
-              <button className="header__basket header__action-item">
-                <svg className={`basket-icon header__basket-icon basket-icon--theme-${theme}`}>
-                  <use xlinkHref="img/svg/sprite.svg#basket" />
+              <button className='header__basket header__action-item'>
+                <svg
+                  className={`basket-icon header__basket-icon basket-icon--theme-${theme}`}
+                >
+                  <use xlinkHref='img/svg/sprite.svg#basket' />
                 </svg>
-                <span className="header__basket-icon-counter">{HEADER_DATA.counter.basket}</span>
+                <span className='header__basket-icon-counter'>
+                  {data.counter.basket}
+                </span>
               </button>
               <Search theme={theme} />
-              <Lang data={HEADER_DATA.lang} theme={theme}/>
+              <Lang data={data.lang} theme={theme} />
             </div>
           </div>
         </div>
       </header>
     );
   }
-};
+}
 
-export default Header
+export default Header;

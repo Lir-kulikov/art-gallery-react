@@ -1,11 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useContext } from 'react';
+import {AppContext} from '../../context/context';
 import { useForm } from 'react-hook-form';
 import useWindowSize from '../../customHooks/use-window-size';
+import SocialLarge from '../social-large'
 import cn from 'classnames';
 import './modal-autorize.scss';
 
-const ModalAutorize = ({ openModalReg, openModalRes, modalAutorize }) => {
-  const { register, handleSubmit, errors, reset } = useForm({
+const ModalAutorize = ({ data }) => {
+
+  const { openModalReg, openModalRes } = useContext(AppContext);
+
+  const { register, handleSubmit, errors } = useForm({
     mode: 'onBlur',
     reValidateMode: 'onChange',
   });
@@ -16,19 +21,13 @@ const ModalAutorize = ({ openModalReg, openModalRes, modalAutorize }) => {
     e.target.reset(); // reset after form submit
   };
 
-  useEffect(() => {
-    if(errors.autorizeEmail) {
-      console.log('hello');
-    }
-  }, [errors]);
-
   return (
     <div className='modal-autorize'>
       <div className='modal-autorize__header'>
-        <h2 className='modal-autorize__title title-lg'>Авторизация</h2>
+        <h2 className='modal-autorize__title title-lg'>{data.title}</h2>
         <div className='modal__question'>
           <span className='modal__question-text modal__question-text--mobile-hidden'>
-            Еще нет аккаунта?
+            {data.registration.question}
           </span>
           {size.width > 767 && (
             <button
@@ -37,52 +36,17 @@ const ModalAutorize = ({ openModalReg, openModalRes, modalAutorize }) => {
               name='registr'
               onClick={openModalReg}
             >
-              Регистрация
+              {data.registration.button}
             </button>
           )}
         </div>
       </div>
       <div className='modal-autorize__body'>
         <div className='modal-autorize__social'>
-          <div className='modal-autorize__social-title'>
-            С помощью социальных сетей
+          <div className='modal__title-sm'>
+            {data.social.title}
           </div>
-          <div className='social-large'>
-            <ul className='social-large__list'>
-              <li className='social-large__item'>
-                <a className='social-large__link' href='#' target='_blank'>
-                  <svg className='social-large__icon'>
-                    <use xlinkHref='img/svg/sprite.svg#vk' />
-                  </svg>
-                  <span className='social-large__text'>VKontakte</span>
-                </a>
-              </li>
-              <li className='social-large__item'>
-                <a className='social-large__link' href='#' target='_blank'>
-                  <svg className='social-large__icon'>
-                    <use xlinkHref='img/svg/sprite.svg#facebook' />
-                  </svg>
-                  <span className='social-large__text'>Facebook</span>
-                </a>
-              </li>
-              <li className='social-large__item'>
-                <a className='social-large__link' href='#' target='_blank'>
-                  <svg className='social-large__icon'>
-                    <use xlinkHref='img/svg/sprite.svg#odnoklassniki' />
-                  </svg>
-                  <span className='social-large__text'>Odnoklassniki</span>
-                </a>
-              </li>
-              <li className='social-large__item'>
-                <a className='social-large__link' href='#' target='_blank'>
-                  <svg className='social-large__icon'>
-                    <use xlinkHref='img/svg/sprite.svg#instagram' />
-                  </svg>
-                  <span className='social-large__text'>Instagram</span>
-                </a>
-              </li>
-            </ul>
-          </div>
+          <SocialLarge data={data.social} />
         </div>
         <form
           className='modal-autorize__form form-autorize'
@@ -95,7 +59,7 @@ const ModalAutorize = ({ openModalReg, openModalRes, modalAutorize }) => {
                 className='form-autorize__label modal-label'
                 htmlFor='autorizeEmail'
               >
-                E-mail
+                {data.fields.email}
               </label>
               <input
                 className={cn('form-autorize__field modal-field', {'error' : errors.autorizeEmail})}
@@ -118,7 +82,7 @@ const ModalAutorize = ({ openModalReg, openModalRes, modalAutorize }) => {
                 className='form-autorize__label modal-label'
                 htmlFor='autorize-password'
               >
-                Пароль
+                {data.fields.password}
               </label>
               <input
                 className={cn('form-autorize__field modal-field', {'error' : errors.autorizePassword})}
@@ -145,11 +109,11 @@ const ModalAutorize = ({ openModalReg, openModalRes, modalAutorize }) => {
             type='submit'
             name='autorize-submit'
           >
-            авторизоваться
+            {data.submit}
           </button>
           <div className='modal__question'>
             <span className='modal__question-text modal__question-text--mobile-hidden'>
-              Забыли пароль?
+              {data.reset.question}
             </span>
             {size.width < 767 && (
               <button
@@ -158,7 +122,7 @@ const ModalAutorize = ({ openModalReg, openModalRes, modalAutorize }) => {
                 name='registr'
                 onClick={openModalReg}
               >
-                Регистрация
+                {data.registration.button}
               </button>
             )}
             <button
@@ -167,7 +131,7 @@ const ModalAutorize = ({ openModalReg, openModalRes, modalAutorize }) => {
               name='restore'
               onClick={openModalRes}
             >
-              Восстановить пароль
+              {data.reset.button}
             </button>
           </div>
         </form>

@@ -1,10 +1,13 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
+import {AppContext} from '../../context/context';
 import useOutsideClick from "../use-click-outside/use-click-outside";
 import cn from 'classnames';
 
 import './account.scss'
 
-const Account = ( { onClick, theme } ) => {
+const Account = ({ theme }) => {
+
+  const { openModalAutorize } = useContext(AppContext);
 
   const [show, setSate] = useState(false);
   const ref = useRef();
@@ -15,14 +18,13 @@ const Account = ( { onClick, theme } ) => {
 
   const toggleState = () => {
     setSate(!show);
-    console.log(show);
   };
 
   
 
   return (
     <div className={`account header__account header__action-item account--theme-${theme}`}>
-      <button className="account__btn" onClick={onClick === undefined ? toggleState : onClick} >
+      <button className="account__btn" onClick={theme === 'light' ? toggleState : openModalAutorize} >
         <svg className={`user-icon account__user-icon user-icon--theme-${theme}`}>
           <use xlinkHref="img/svg/sprite.svg#user" />
         </svg>

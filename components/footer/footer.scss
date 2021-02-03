@@ -77,6 +77,10 @@
     }
   }
 
+  &__col-text {
+    white-space: pre-line;
+  }
+
   &__col-item {
     &:not(:last-child) {
       margin-bottom: 0;
@@ -119,6 +123,7 @@
       display: block;
       height: 27px;
       margin-top: 25px;
+      margin-bottom: 25px;
     }
   }
 

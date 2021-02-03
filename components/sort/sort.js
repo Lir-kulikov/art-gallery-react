@@ -3,26 +3,17 @@ import Select from 'react-select';
 
 import './sort.scss';
 
-const SORT_DATA = {
-  label: 'Сортировать по',
-  options: [
-    { label: 'Дате добавления', value: 'Дате добавления' },
-    { label: 'Цене', value: 'Цене' },
-    { label: 'Популярности', value: 'Популярности' },
-  ],
-};
-
 class Sort extends Component {
 
   render() {
-    const { parentClass } = this.props;
-
+    const { parentClass, data } = this.props;
+    
     return (
       <div className={`sort ${parentClass}__sort`}>
-        <label className='sort__label'>Сортировать по</label>
+        <label className='sort__label'>{data.label}</label>
         <Select
-          options={SORT_DATA.options}
-          defaultValue={SORT_DATA.options[0]}
+          options={data.options}
+          defaultValue={data.options[0]}
           className='sort-select'
           classNamePrefix='sort-select'
           instanceId='sort'

@@ -1,12 +1,11 @@
+import React, { useContext } from 'react';
+import {AppContext} from '../../context/context';
+
 import './modal-video.scss';
 
-const ModalVideo = ({ closeModalVideo, data }) => {
+const ModalVideo = ({ data }) => {
 
-  const autoplay = () => {
-
-  };
-
-  console.log(data)
+  const { closeModalVideo } = useContext(AppContext);
 
   return (
     <div className='modal-video' aria-hidden='true'>
