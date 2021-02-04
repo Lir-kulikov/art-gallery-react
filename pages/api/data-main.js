@@ -591,13 +591,69 @@ const data = {
     submit: 'Авторизоваться'
   },
   modalReg: {
-
+    title: 'Регистрация',
+    anons: 'Это бесплатно и займет не более 3 минут',
+    autorization: {
+      button: 'Авторизоваться',
+      question: 'Уже зарегистрированы?'
+    },
+    radio: {
+      first: 'Я художник',
+      second: 'Я покупатель'
+    },
+    social: {
+      title: 'С помощью социальных сетей',
+      items: [
+        {
+          url: '#',
+          icon: '/img/svg/sprite.svg#vk',
+          name: 'VKontakte',
+        },
+        {
+          url: '#',
+          icon: '/img/svg/sprite.svg#facebook',
+          name: 'Facebook',
+        },
+        {
+          url: '#',
+          icon: '/img/svg/sprite.svg#odnoklassniki',
+          name: 'Odnoklassniki',
+        },
+        {
+          url: '#',
+          icon: '/img/svg/sprite.svg#instagram',
+          name: 'Instagram',
+        },
+      ]
+    },
+    formLabel: 'С помощью E-mail',
+    fields: {
+      name: 'Имя',
+      lastname: 'Фамилия',
+      email: 'E-mail',
+      password: 'Пароль',
+      checkbox: 'Я согласен с ',
+      terms: {
+        text: 'пользовательским соглашением',
+        url: '#'
+      },
+    },
+    button: 'Зарегистрироваться'
   },
   modalRes: {
-
+    title: 'Восстановить пароль',
+    field: 'Введите свой e-mail',
+    button: 'Восстановить пароль',
+    autorization: {
+      question: 'Вспомнили пароль?',
+      button: 'Авторизоваться'
+    }
+  },
+  modalSuccess: {
+    title: 'Успех!',
+    text: 'Мы отправили на ваш e-mail инструкцию по сбросу пароля',
+    picture: '/img/succes.png'
   }
-
-
 };
 
 export default function handler(req, res) {

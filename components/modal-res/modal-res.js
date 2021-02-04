@@ -7,7 +7,7 @@ import cn from 'classnames';
 import './modal-res.scss';
 
 
-const ModalRes = () => {
+const ModalRes = ({ data }) => {
 
   const { openModalAutorize, openModalSuccess } = useContext(AppContext);
 
@@ -23,7 +23,7 @@ const ModalRes = () => {
   return (
     <div className='modal-res'>
       <div className='modal-res__header'>
-        <h2 className='modal-res__title title-lg'>Восстановить пароль</h2>
+        <h2 className='modal-res__title title-lg'>{data.title}</h2>
       </div>
       <form
         className='modal-res__body form-res'
@@ -32,7 +32,7 @@ const ModalRes = () => {
       >
         <div className='form-res__item'>
           <label className='form-res__label modal-label' htmlFor='resEmail'>
-            Введите свой e-mail
+            {data.field}
           </label>
           <input
             className={cn('form-res__field modal-field', {
@@ -57,17 +57,17 @@ const ModalRes = () => {
           type='submit'
           name='res-submit'
         >
-          Восстановить пароль
+          {data.button}
         </button>
         <div className='modal__question'>
-          <span className='modal__question-text'>Вспомнили пароль?</span>
+          <span className='modal__question-text'>{data.autorization.question}</span>
           <button
             className='modal__question-btn dashed'
             type='button'
             name='res-autorize'
             onClick={openModalAutorize}
           >
-            Авторизоваться
+           {data.autorization.button}
           </button>
         </div>
       </form>

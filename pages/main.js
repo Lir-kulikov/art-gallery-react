@@ -203,7 +203,7 @@ const Main = ({ data }) => {
           type='button'
           onClick={closeModalReg}
         />
-        <ModalReg />
+        <ModalReg data={data.modalReg} />
       </Modal>
       <Modal
         isOpen={modalRes}
@@ -217,7 +217,7 @@ const Main = ({ data }) => {
           type='button'
           onClick={closeModalRes}
         />
-        <ModalRes />
+        <ModalRes data={data.modalRes} />
       </Modal>
       <Modal
         isOpen={modalSuccess}
@@ -231,7 +231,7 @@ const Main = ({ data }) => {
           type='button'
           onClick={closeModalSuccess}
         />
-        <ModalSuccess />
+        <ModalSuccess data={data.modalSuccess} />
       </Modal>
     </div>
   );

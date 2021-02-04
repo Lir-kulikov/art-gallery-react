@@ -3,6 +3,12 @@
 
 //base
 
+.fade {
+  height: 100px;
+  width: 400px;
+  background-color: black;
+}
+
 * {
   outline: none;
 }
@@ -643,7 +649,7 @@ body {
     height: 100%;
     align-items: center;
     padding: 65px;
-    background-image: url('/img/top-catalog.png');
+    //background-image: url('/img/top-catalog.png');
     background-position: center top;
     background-repeat: no-repeat;
     background-size: cover;

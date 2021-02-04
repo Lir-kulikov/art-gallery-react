@@ -347,49 +347,6 @@ const data = {
         mobileName: 'Hawking Brothers',
       },
     },
-  },
-  modalAutorize: {
-    title: 'Авторизация',
-    registration: {
-      button: 'Регистрация',
-      question: 'Еще нет аккаунта?',
-    },
-    reset: {
-      button: 'Восстановить',
-      question: 'Забыли пароль?'
-    },
-    social: {
-      title: 'С помощью социальных сетей',
-      items: [
-        {
-          url: '#',
-          icon: '',
-          name: '',
-        },
-        {
-          url: '#',
-          icon: '',
-          name: '',
-        },
-        {
-          url: '#',
-          icon: '',
-          name: '',
-        },
-        {
-          url: '#',
-          icon: '',
-          name: '',
-        },
-      ]
-    },
-    fields: ''
-  },
-  modalReg: {
-
-  },
-  modalRes: {
-
   }
 };
 

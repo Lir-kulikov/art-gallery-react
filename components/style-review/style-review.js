@@ -10,9 +10,8 @@ import SliderBtn from '../slider-btn';
 import StyleCard from '../style-card';
 
 SwiperCore.use([Navigation]);
-
 const StyleReview = ({ data }) => {
-  
+  console.log(data.slides)
   return (
     <section className='style-review'>
       <div className='container style-review__wrapper'>

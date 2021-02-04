@@ -1,16 +1,19 @@
-import './modal-success.scss'
+import './modal-success.scss';
 
-const ModalSuccess = () => {
+const ModalSuccess = ({ data }) => {
   return (
-    <div className="modal-success">
-       <div className="modal-succes__header"> 
-          <h2 className="modal-res__title title-lg">Успех!</h2>
-        </div>
-        <div className="modal-success__body">
-          <p className="modal-success__text">Мы отправили на ваш e-mail инструкцию по сбросу пароля</p><img className="modal-success__img" src="img/succes.png" />
-        </div>
+    <div className='modal-success'>
+      <div className='modal-succes__header'>
+        <h2 className='modal-res__title title-lg'>{data.title}</h2>
+      </div>
+      <div className='modal-success__body'>
+        <p className='modal-success__text'>
+          {data.text}
+        </p>
+        <img className='modal-success__img' src={data.picture} />
+      </div>
     </div>
   );
 };
 
-export default ModalSuccess
+export default ModalSuccess;

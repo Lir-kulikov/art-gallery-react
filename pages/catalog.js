@@ -1,3 +1,4 @@
+import { Parallax } from 'react-parallax';
 import Head from 'next/head';
 import Header from '../components/header';
 import Footer from '../components/footer';
@@ -167,11 +168,11 @@ const Catalog = ({ data }) => {
       </Head>
       <Header theme={data.theme} data={data.header} />
       <main>
-        <div className='catalog__top-img-wrapper'>
+        <Parallax className='catalog__top-img-wrapper' bgImage={'/img/top-catalog.png'} strength={50} blur={{ min: -20, max: 20 }}>
           <div className='catalog__top-img'>
             <h2 className='catalog__title title-lg'>{data.title}</h2>
           </div>
-        </div>
+        </Parallax>
         <Breadcrumbs data={data.breadcrumbs} parentClass={data.parentClass} />
         <Filter />
         <FilterCards />

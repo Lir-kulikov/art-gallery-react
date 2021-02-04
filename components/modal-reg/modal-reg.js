@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import cn from 'classnames';
 import './modal-reg.scss';
 
-const ModalReg = () => {
+const ModalReg = ({ data }) => {
 
   const { openModalAutorize } = useContext(AppContext);
 
@@ -20,20 +20,20 @@ const ModalReg = () => {
   return (
     <div className='modal-reg'>
       <div className='modal-reg__header'>
-        <h2 className='modal-reg__title title-lg'>Регистрация</h2>
+        <h2 className='modal-reg__title title-lg'>{data.title}</h2>
         <div className='modal-reg__header-row'>
           <span className='modal-reg__header-anons'>
-            Это бесплатно и займет не более 3 минут
+            {data.anons}
           </span>
           <div className='modal__question'>
-            <span className='modal__question-text'>Уже зарегистрированы?</span>
+            <span className='modal__question-text'>{data.autorization.question}</span>
             <button
               className='modal__question-btn dashed'
               type='button'
               name='registr'
               onClick={openModalAutorize}
             >
-              Авторизоваться
+              {data.autorization.button}
             </button>
           </div>
         </div>
@@ -55,7 +55,7 @@ const ModalReg = () => {
                 ref={register({ required: true })}
                 value='художник'
               />
-              <span className='radio__box' />Я художник
+              <span className='radio__box' />{data.radio.first}
             </label>
             <label className='radio' htmlFor='registr-radio-2'>
               <input
@@ -66,7 +66,7 @@ const ModalReg = () => {
                 ref={register({ required: true })}
                 value='покупатель'
               />
-              <span className='radio__box' />Я покупатель
+              <span className='radio__box' />{data.radio.second}
             </label>
           </div>
         </div>
@@ -112,7 +112,7 @@ const ModalReg = () => {
           </div>
           <div className='form-reg__fields'>
             <div className='modal__title-sm modal__title-sm--mobile-hidden'>
-              С помощью E-mail
+              {data.formLabel}
             </div>
             <div className='form-reg__row'>
               <div className='form-reg__item form-reg__item--on-row'>
@@ -120,7 +120,7 @@ const ModalReg = () => {
                   className='form-reg__label modal-label'
                   htmlFor='regFirstname'
                 >
-                  Имя
+                  {data.fields.name}
                 </label>
                 <input
                   className={cn('form-reg__field modal-field', {
@@ -144,7 +144,7 @@ const ModalReg = () => {
                   className='form-reg__label modal-label'
                   htmlFor='regLastname'
                 >
-                  Фамилия
+                  {data.fields.lastname}
                 </label>
                 <input
                   className={cn('form-reg__field modal-field', {
@@ -166,7 +166,7 @@ const ModalReg = () => {
             </div>
             <div className='form-reg__item'>
               <label className='form-reg__label modal-label' htmlFor='regEmail'>
-                E-mail
+                {data.fields.email}
               </label>
               <input
                 className={cn('form-reg__field modal-field', {
@@ -191,7 +191,7 @@ const ModalReg = () => {
                 className='form-reg__label modal-label'
                 htmlFor='regPassword'
               >
-                Пароль
+                {data.fields.password}
               </label>
               <input
                 className={cn('form-reg__field modal-field', {
@@ -224,7 +224,7 @@ const ModalReg = () => {
                   required: true,
                 })}
               />
-              Я согласен с{' '}
+              {data.fields.checkbox}
               <span
                 className={cn('form-reg__check-box', {
                   error: errors.regCheckbox,
@@ -232,10 +232,10 @@ const ModalReg = () => {
               />
               <a
                 className='dashed form-reg__check-link'
-                href='#'
+                // href={data.terms.url}
                 target='_blank'
               >
-                пользовательским соглашением
+                {data.fields.terms.text}
               </a>
             </label>
             <button
@@ -243,7 +243,7 @@ const ModalReg = () => {
               type='submit'
               name='reg-submit'
             >
-              зарегистрироваться
+              {data.button}
             </button>
           </div>
         </div>
