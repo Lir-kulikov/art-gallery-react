@@ -7,37 +7,13 @@ import cn from 'classnames';
 
 import 'rc-slider/assets/index.css';
 import './filter.scss';
-//import FilterAuthor from "../filter-author";
 
-const FILTER_DATA = {
-  priceSlider: {
-    title: 'Цена',
-    minValue: 0,
-    maxValue: 99999,
-  },
-  sizeSlider: {
-    title: 'Размер',
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-  },
-  orientation: {
-    title: 'Ориентация',
-  },
-  resetBtn: {
-    icon: '',
-    title: 'Сбросить фильтр',
-  },
-  additionalFilters: {
-    btn: 'Показать фильтр',
-    btnActive: 'Свернуть фильтр',
-  },
-};
+const Filter = ({ data }) => {
+  const marksArr = data.sizeSlider.sizes;
+  const marksObj = Object.assign({}, marksArr);
 
-const marksArr = FILTER_DATA.sizeSlider.sizes;
-const marksObj = Object.assign({}, marksArr);
-
-const Filter = () => {
-  const [priceMin, setPriceMin] = useState(FILTER_DATA.priceSlider.minValue);
-  const [priceMax, setPriceMax] = useState(FILTER_DATA.priceSlider.maxValue);
+  const [priceMin, setPriceMin] = useState(data.priceSlider.minValue);
+  const [priceMax, setPriceMax] = useState(data.priceSlider.maxValue);
   const [rangeValues, setRangeValues] = useState([0, marksArr.length - 1]);
   const [heightSecondFilter, setHeightSecondFilter] = useState(0);
   const [heightMainFilter, setHeightMainFilter] = useState(0);
@@ -62,8 +38,8 @@ const Filter = () => {
 
   const filterReset = () => {
     document.getElementById('filter-form').reset();
-    setPriceMin(FILTER_DATA.priceSlider.minValue);
-    setPriceMax(FILTER_DATA.priceSlider.maxValue);
+    setPriceMin(data.priceSlider.minValue);
+    setPriceMax(data.priceSlider.maxValue);
     setRangeValues([0, marksArr.length - 1]);
     setSelectedOptions([]);
   };
@@ -163,7 +139,7 @@ const Filter = () => {
           <svg className='settings-icon filter__settings-icon'>
             <use xlinkHref='/img/svg/sprite.svg#controls' />
           </svg>
-          Фильтр
+          {data.title}
           <svg className='dropdown-icon filter__dropdown-icon'>
             <use xlinkHref='/img/svg/sprite.svg#dropdown' />
           </svg>
@@ -181,9 +157,9 @@ const Filter = () => {
                 <div className='ui-slider__range-wrapper'>
                   <span
                     className='filter__item-title filter__item-title--tablet-top'
-                    data-tablet-text='Цена'
+                    data-tablet-text={data.priceSlider.title}
                   >
-                    Цена
+                    {data.priceSlider.title}
                   </span>
                   <div className='ui-slider__range js-ui-slider-price'>
                     <div className='ui-slider__fields'>
@@ -204,14 +180,14 @@ const Filter = () => {
                       />
                     </div>
                     <span className='ui-slider__min js-ui-slider-min'>
-                      {FILTER_DATA.priceSlider.minValue}
+                      {data.priceSlider.minValue}
                     </span>
-                    <span className='ui-slider__max js-ui-slider-max'>max</span>
+                    <span className='ui-slider__max js-ui-slider-max'>{data.priceSlider.maxValueTitle}</span>
                     <Range
                       className='rc-slider-price'
                       step={1}
-                      min={FILTER_DATA.priceSlider.minValue}
-                      max={FILTER_DATA.priceSlider.maxValue}
+                      min={data.priceSlider.minValue}
+                      max={data.priceSlider.maxValue}
                       tipProps={{
                         placement: 'top',
                         visible: true,
@@ -224,7 +200,7 @@ const Filter = () => {
                 </div>
               </div>
               <div className='filter__item ui-slider ui-slider--type-size'>
-                <span className='filter__item-title'>Размер</span>
+                <span className='filter__item-title'>{data.sizeSlider.title}</span>
                 <Range
                   className='rc-slider-size'
                   step={1}
@@ -251,7 +227,7 @@ const Filter = () => {
                 />
               </div>
               <div className='filter__item ui-slider ui-slider--type-orient'>
-                <div className='filter__item-title'>Ориентация</div>
+                <div className='filter__item-title'>{data.orientation.title}</div>
                 <div className='filter__checkbox-wrapper'>
                   <div className='filter__checkbox'>
                     <input
@@ -297,9 +273,9 @@ const Filter = () => {
                 name='btn-reset'
                 onClick={filterReset}
               >
-                Сбросить фильтр
+                {data.resetBtn.title}
                 <svg className='reset-icon filter__reset-icon'>
-                  <use xlinkHref='/img/svg/sprite.svg#reset' />
+                  <use xlinkHref={data.resetBtn.icon} />
                 </svg>
               </button>
             </div>
@@ -322,8 +298,8 @@ const Filter = () => {
             >
               <span>
                 {heightSecondFilter
-                  ? FILTER_DATA.additionalFilters.btnActive
-                  : FILTER_DATA.additionalFilters.btn}
+                  ? data.btnActive
+                  : data.btn}
               </span>
               <svg className='dropdown-icon'>
                 <use xlinkHref='/img/svg/sprite.svg#dropdown' />
@@ -337,7 +313,7 @@ const Filter = () => {
             height={heightSecondFilter}
           >
             <FilterTabs
-              data={FILTER_DATA.additionalFilters.tabs}
+              data={data.additionalFilters}
               selectedOptions={selectedOptions}
               handleSelect={handleSelect}
               removeOption={removeOption}
@@ -356,7 +332,7 @@ const Filter = () => {
             />
           </AnimateHeight>
           <button className='filter__btn filter__submit' type='submit'>
-            Показать картины
+           {data.showBtn}
           </button>
         </div>
       </AnimateHeight>

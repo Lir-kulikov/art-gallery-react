@@ -2,7 +2,7 @@ import AnimateHeight from 'react-animate-height';
 import cn from 'classnames';
 import './filter-color.scss';
 
-const FilterColor = ({toggleFilterColor, heightFilterColor}) => {
+const FilterColor = ({ data, toggleFilterColor, heightFilterColor }) => {
   return (
     <>
     <div
@@ -11,7 +11,7 @@ const FilterColor = ({toggleFilterColor, heightFilterColor}) => {
       aria-controls='toggle-color-filters'
       onClick={toggleFilterColor}
     >
-      Цвет
+      {data.title}
     </div>
     <AnimateHeight
       id='toggle-color-filters'
@@ -20,18 +20,12 @@ const FilterColor = ({toggleFilterColor, heightFilterColor}) => {
     >
       <div className={cn('filter__style filter__tab-body', {'is-open' : heightFilterColor})}>
         <div className="filter__tab-body-inner">
-          <div className="filter__style-tag">
-            <input className="filter__style-input js-filter-style-input" type="radio" id="синий" name="filter-color" />
-            <label className="filter__style-label" htmlFor="синий">синий</label>
-          </div>
-          <div className="filter__style-tag">
-            <input className="filter__style-input js-filter-style-input" type="radio" id="желтый" name="filter-color" />
-            <label className="filter__style-label" htmlFor="желтый">желтый</label>
-          </div>
-          <div className="filter__style-tag">
-            <input className="filter__style-input js-filter-style-input" type="radio" id="серый" name="filter-color" />
-            <label className="filter__style-label" htmlFor="серый">серый</label>
-          </div>
+          {data.items.map((item, key) => (
+            <div className="filter__style-tag" key={item + key}>
+              <input className="filter__style-input" type="radio" id={item} name="filter-color" />
+              <label className="filter__style-label" htmlFor={item}>{item}</label>
+            </div>
+          ))}
         </div>
       </div>
     </AnimateHeight>

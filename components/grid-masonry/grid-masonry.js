@@ -16,7 +16,7 @@ class GridMasonry extends Component {
 
   componentDidMount() {
     this.msnry = new Masonry( this.grid.current, {
-      itemSelector: '.js-grid-item',
+      itemSelector: '',
       columnWidth: '.js-sizer',
       gutter: '.js-gutter',
       horizontalOrder: true,
@@ -48,7 +48,7 @@ class GridMasonry extends Component {
               return (
                 <React.Fragment key={item.id}>
                   <MasonryCard data={item} />
-                  <div className="grid-masonry__item grid-masonry__item--empty js-grid-item hidden-desktop-up hidden-mobile-down" />
+                  <div className="grid-masonry__item grid-masonry__item--empty hidden-desktop-up hidden-mobile-down" />
                 </React.Fragment>
               )
               break;
@@ -56,7 +56,7 @@ class GridMasonry extends Component {
               return (
                 <React.Fragment key={item.id}>
                   <MasonryCard data={item} />
-                  <div className="grid-masonry__item grid-masonry__item--empty js-grid-item hidden-desktop-up hidden-mobile-down" />
+                  <div className="grid-masonry__item grid-masonry__item--empty hidden-desktop-up hidden-mobile-down" />
                 </React.Fragment>
               )
               break;

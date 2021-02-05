@@ -11,6 +11,7 @@ import FilterStyle from '../filter-style';
 import './filter-tabs.scss';
 
 const FilterTabs = ({
+  data,
   selectedOptions,
   removeOption,
   handleSelect,
@@ -30,9 +31,10 @@ const FilterTabs = ({
   const DATA_TABS = {
     content: [
       {
-        title: 'Автор',
+        title: data.filterAuthor.title,
         component: (
           <FilterAuthor
+            data={data.filterAuthor}
             selectedOptions={selectedOptions}
             removeOption={removeOption}
             handleSelect={handleSelect}
@@ -42,45 +44,50 @@ const FilterTabs = ({
         ),
       },
       {
-        title: 'Жанр',
+        title: data.filterGenre.title,
         component: (
           <FilterGenre
+            data={data.filterGenre}
             toggleFilterGenre={toggleFilterGenre}
             heightFilterGenre={heightFilterGenre}
           />
         ),
       },
       {
-        title: 'Цвет',
+        title: data.filterColor.title,
         component: (
           <FilterColor
+            data={data.filterColor}
             toggleFilterColor={toggleFilterColor}
             heightFilterColor={heightFilterColor}
           />
         ),
       },
       {
-        title: 'Тема',
+        title: data.filterTheme.title,
         component: (
           <FilterTheme
+            data={data.filterTheme}
             toggleFilterTheme={toggleFilterTheme}
             heightFilterTheme={heightFilterTheme}
           />
         ),
       },
       {
-        title: 'Материал',
+        title: data.filterMaterial.title,
         component: (
           <FilterMaterial
+            data={data.filterMaterial}
             toggleFilterMaterial={toggleFilterMaterial}
             heightFilterMaterial={heightFilterMaterial}
           />
         ),
       },
       {
-        title: 'Стиль',
+        title: data.filterStyle.title,
         component: (
           <FilterStyle
+            data={data.filterStyle}
             toggleFilterStyle={toggleFilterStyle}
             heightFilterStyle={heightFilterStyle}
           />

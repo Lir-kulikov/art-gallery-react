@@ -2,7 +2,7 @@ import AnimateHeight from 'react-animate-height';
 
 import './filter-material.scss'
 
-const FilterMaterial = ({toggleFilterMaterial, heightFilterMaterial}) => {
+const FilterMaterial = ({ data, toggleFilterMaterial, heightFilterMaterial }) => {
   return (
     <>
     <div
@@ -11,7 +11,7 @@ const FilterMaterial = ({toggleFilterMaterial, heightFilterMaterial}) => {
       aria-controls='toggle-material-filters'
       onClick={toggleFilterMaterial}
     >
-      Материал
+      {data.title}
     </div>
     <AnimateHeight
       id='toggle-material-filters'
@@ -20,18 +20,12 @@ const FilterMaterial = ({toggleFilterMaterial, heightFilterMaterial}) => {
     >
     <div className="filter__style filter__tab-body">
       <div className="filter__tab-body-inner">
-        <div className="filter__style-tag">
-          <input className="filter__style-input js-filter-style-input" type="radio" id="красный" name="filter-material" />
-          <label className="filter__style-label" htmlFor="красный">красный</label>
-        </div>
-        <div className="filter__style-tag">
-          <input className="filter__style-input js-filter-style-input" type="radio" id="черный" name="filter-material" />
-          <label className="filter__style-label" htmlFor="черный">черный</label>
-        </div>
-        <div className="filter__style-tag">
-          <input className="filter__style-input js-filter-style-input" type="radio" id="белый" name="filter-material" />
-          <label className="filter__style-label" htmlFor="белый">белый</label>
-        </div>
+        {data.items.map((item, key) => (
+          <div className="filter__style-tag" key={item + key}>
+            <input className="filter__style-input" type="radio" id={item} name="filter-material" />
+            <label className="filter__style-label" htmlFor={item}>{item}</label>
+          </div>
+        ))}
       </div>
     </div>
     </AnimateHeight>

@@ -70,17 +70,164 @@ const data = {
       url: '#',
     },
   },
-  newWorks: {
-    parentClass: 'new-works',
-    title: 'Новые работы',
-    sort: {
-      label: 'Сортировать по',
-      options: [
-        { label: 'Дате добавления', value: 'Дате добавления' },
-        { label: 'Цене', value: 'Цене' },
-        { label: 'Популярности', value: 'Популярности' },
-      ],
+  filter: {
+    title: 'Фильтр',
+    priceSlider: {
+      title: 'Цена',
+      minValue: 0,
+      maxValue: 99999,
+      maxValueTitle: 'max',
     },
+    sizeSlider: {
+      title: 'Размер',
+      sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    },
+    orientation: {
+      title: 'Ориентация',
+    },
+    resetBtn: {
+      icon: '/img/svg/sprite.svg#reset',
+      title: 'Сбросить фильтр',
+    },
+    btn: 'Показать фильтр',
+    btnActive: 'Свернуть фильтр',
+    showBtn: 'Показать картины',
+    additionalFilters: {
+      filterAuthor: {
+        title: 'Автор',
+        selectLabel: {
+          mobile: 'Начните вводить имя или фамилию',
+          desktop: 'Начните вводить имя или фамилию автора',
+        },
+        options: [
+          {
+            label: 'А',
+            options: [
+              { label: 'Абулафия Крайнова', value: 'Абулафия Крайнова' },
+              { label: 'Арменинов Тримедул', value: 'Арменинов Тримедул' },
+              { label: 'Асадуллин Нефедов', value: 'Асадуллин Нефедов' },
+              { label: 'Абулафия Крайнова', value: 'Абулафия Крайнова' },
+            ],
+          },
+          {
+            label: 'Б',
+            options: [
+              { label: 'Бабурин Константин', value: 'Бабурин Константин' },
+              { label: 'Бабуркин Вениамин', value: 'Бабуркин Вениамин' },
+              { label: 'Бердюгин Бетюг', value: 'Бердюгин Бетюг' },
+              { label: 'Бенвенист Трамп', value: 'Бенвенист Трамп' },
+            ],
+          },
+          {
+            label: 'В',
+            options: [
+              { label: 'Вабурин Константин', value: 'Вабурин Константин' },
+              { label: 'Вабуркин Вениамин', value: 'Вабуркин Вениамин' },
+              { label: 'Вердюгин Бетюг', value: 'Вердюгин Бетюг' },
+              { label: 'Венвенист Трамп', value: 'Венвенист Трамп' },
+            ],
+          },
+        ],
+      },
+      filterGenre: {
+        title: 'Жанр',
+        items: ['Первый', 'Второй', 'Третий', 'Четвертый', 'Пятый', 'Шестой'],
+      },
+      filterStyle: {
+        title: 'Стиль',
+        items: [
+          'Вортицизм',
+          'Модернизм',
+          'Авангардизм',
+          'Реализм',
+          'Конструктивизм',
+          'Готика',
+          'Классицизм',
+          'Поп-арт',
+        ],
+      },
+      filterColor: {
+        title: 'Цвет',
+        items: ['синий', 'красный', 'зеленый'],
+      },
+      filterTheme: {
+        title: 'Тема',
+        items: ['погода', 'вода', 'люди'],
+      },
+      filterMaterial: {
+        title: 'Материал',
+        items: ['синий', 'красный', 'зеленый'],
+      },
+    },
+  },
+  filterCards: {
+    title: 'Популярные фильтры',
+    items: [
+      {
+        id: '0',
+        url: '',
+        picture: '/img/filter-1.png',
+        title: 'Барроко',
+      },
+      {
+        id: '1',
+        url: '',
+        picture: '/img/filter-2.png',
+        title: 'Живопись',
+      },
+      {
+        id: '2',
+        url: '',
+        picture: '/img/filter-3.png',
+        title: 'Пейзаж',
+      },
+      {
+        id: '3',
+        url: '',
+        picture: '/img/filter-4.png',
+        title: 'Поп-арт',
+      },
+      {
+        id: '4',
+        url: '',
+        picture: '/img/filter-5.png',
+        title: 'Модерн',
+      },
+      {
+        id: '5',
+        url: '',
+        picture: '/img/filter-2.png',
+        title: 'Живопись',
+      },
+      {
+        id: '6',
+        url: '',
+        picture: '/img/filter-3.png',
+        title: 'Пейзаж',
+      },
+      {
+        id: '7',
+        url: '',
+        picture: '/img/filter-4.png',
+        title: 'Поп-арт',
+      },
+      {
+        id: '8',
+        url: '',
+        picture: '/img/filter-5.png',
+        title: 'Барроко',
+      },
+    ],
+  },
+  sort: {
+    label: 'Сортировать по',
+    options: [
+      { label: 'Дате добавления', value: 'Дате добавления' },
+      { label: 'Цене', value: 'Цене' },
+      { label: 'Популярности', value: 'Популярности' },
+    ],
+  },
+  productCards: {
     items: [
       {
         id: 0,
@@ -226,7 +373,7 @@ const data = {
         basket: false,
       },
     ],
-    button: 'Смотреть все',
+    showBtn: 'Показать ещё',
   },
   footer: {
     about: {
@@ -347,7 +494,7 @@ const data = {
         mobileName: 'Hawking Brothers',
       },
     },
-  }
+  },
 };
 
 export default function handler(req, res) {

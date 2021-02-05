@@ -9,73 +9,12 @@ import SliderBtn from '../slider-btn';
 
 SwiperCore.use([Navigation]);
 
-const FILTER_CARDS_DATA = {
-  title: 'Популярные фильтры',
-  items: [
-    {
-      id: '0',
-      url: '',
-      picture: '/img/filter-1.png',
-      title: 'Барроко'
-    },
-    {
-      id: '1',
-      url: '',
-      picture: '/img/filter-2.png',
-      title: 'Живопись'
-    },
-    {
-      id: '2',
-      url: '',
-      picture: '/img/filter-3.png',
-      title: 'Пейзаж'
-    },
-    {
-      id: '3',
-      url: '',
-      picture: '/img/filter-4.png',
-      title: 'Поп-арт'
-    },
-    {
-      id: '4',
-      url: '',
-      picture: '/img/filter-5.png',
-      title: 'Модерн'
-    },
-    {
-      id: '5',
-      url: '',
-      picture: '/img/filter-2.png',
-      title: 'Живопись'
-    },
-    {
-      id: '6',
-      url: '',
-      picture: '/img/filter-3.png',
-      title: 'Пейзаж'
-    },
-    {
-      id: '7',
-      url: '',
-      picture: '/img/filter-4.png',
-      title: 'Поп-арт'
-    },
-    {
-      id: '8',
-      url: '',
-      picture: '/img/filter-5.png',
-      title: 'Барроко'
-    },
-
-  ]
-}
-
-const FilterCards = ( {parentClass} ) => {
+const FilterCards = ({ data, parentClass }) => {
   return (
     <section className="filter-cards catalog__filter-cards">
       <div className="container">
         <div className="filter-cards__header">
-          <h2 className="filter-cards__title">{FILTER_CARDS_DATA.title}</h2>
+          <h2 className="filter-cards__title">{data.title}</h2>
           <div className="section-line filter-cards__section-line" />
           <div className="filter-cards__slider-btns" data-da="swiper-container-filter,1,767">
             <SliderBtn />
@@ -105,7 +44,7 @@ const FilterCards = ( {parentClass} ) => {
             },
           }}
         >
-        {FILTER_CARDS_DATA.items.map((item) => {
+        {data.items.map((item) => {
           return (
             <SwiperSlide key={item.id}>
               <GenreCard data={item}></GenreCard>

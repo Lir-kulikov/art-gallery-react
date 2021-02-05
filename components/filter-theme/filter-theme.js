@@ -2,7 +2,7 @@ import AnimateHeight from 'react-animate-height';
 
 import './filter-theme.scss'
 
-const FilterTheme = ({toggleFilterTheme, heightFilterTheme}) => {
+const FilterTheme = ({ data, toggleFilterTheme, heightFilterTheme }) => {
   return (
     <>
     <div
@@ -11,7 +11,7 @@ const FilterTheme = ({toggleFilterTheme, heightFilterTheme}) => {
       aria-controls='toggle-theme-filters'
       onClick={toggleFilterTheme}
     >
-      Тема
+      {data.theme}
     </div>
     <AnimateHeight
       id='toggle-theme-filters'
@@ -20,18 +20,12 @@ const FilterTheme = ({toggleFilterTheme, heightFilterTheme}) => {
     >
     <div className="filter__style filter__tab-body">
       <div className="filter__tab-body-inner">
-        <div className="filter__style-tag">
-          <input className="filter__style-input js-filter-style-input" type="radio" id="Погода" name="filter-theme" />
-          <label className="filter__style-label" htmlFor="Погода">Погода</label>
-        </div>
-        <div className="filter__style-tag">
-          <input className="filter__style-input js-filter-style-input" type="radio" id="Вода" name="filter-theme" />
-          <label className="filter__style-label" htmlFor="Вода">Вода</label>
-        </div>
-        <div className="filter__style-tag">
-          <input className="filter__style-input js-filter-style-input" type="radio" id="Люди" name="filter-theme" />
-          <label className="filter__style-label" htmlFor="Люди">Люди</label>
-        </div>
+        {data.items.map((item, key) => (
+          <div className="filter__style-tag" key={item + key}>
+            <input className="filter__style-input" type="radio" id={item} name="filter-theme" />
+            <label className="filter__style-label" htmlFor={item}>{item}</label>
+          </div>
+        ))}
       </div>
     </div>
     </AnimateHeight>
